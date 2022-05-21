@@ -89,7 +89,7 @@ Código generado:
 
 ### Usar widget en vista con configuración
 
-Uso en view:
+Uso en vista:
 
 ```php
 <?php
@@ -121,7 +121,7 @@ return [
 ];
 ```
 
-Uso en view:
+Uso en vista:
 
 ```php
 <?php
@@ -170,7 +170,7 @@ final class Widget extends AbstractWidget
 }
 ```
 
-Uso en view:
+Uso en vista:
 
 ```php
 <?php
