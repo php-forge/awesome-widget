@@ -6,6 +6,18 @@ namespace Forge\Widget\Html;
 
 use Stringable;
 
+use function array_merge;
+use function count;
+use function htmlspecialchars;
+use function implode;
+use function in_array;
+use function is_array;
+use function is_bool;
+use function is_null;
+use function json_encode;
+use function rtrim;
+use function strtr;
+
 final class Attributes
 {
     private const JSON_OPTIONS = JSON_UNESCAPED_UNICODE | JSON_HEX_QUOT | JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS |
@@ -87,14 +99,9 @@ final class Attributes
      * @link https://html.spec.whatwg.org/#attribute-value-(single-quoted)-state
      * @link https://html.spec.whatwg.org/#attribute-value-(double-quoted)-state
      */
-    public static function encodeAttribute(mixed $value, bool $doubleEncode = true, string $encoding = 'UTF-8'): string
+    public function encodeAttribute(mixed $value, bool $doubleEncode = true, string $encoding = 'UTF-8'): string
     {
-        $value = htmlspecialchars(
-            (string) $value,
-            ENT_QUOTES | ENT_SUBSTITUTE | ENT_HTML5,
-            $encoding,
-            $doubleEncode
-        );
+        $value = htmlspecialchars((string) $value,self::HTMLSPECIALCHARS_OPTIONS, $encoding, $doubleEncode);
 
         return strtr($value, [
             "\u{0000}" => '&#0;', // U+0000 NULL

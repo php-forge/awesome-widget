@@ -8,8 +8,15 @@ use ReflectionClass;
 use ReflectionException;
 use RuntimeException;
 
+use function array_merge;
+use function array_pop;
 use function call_user_func_array;
+use function defined;
 use function get_class;
+use function is_array;
+use function is_file;
+use function str_ends_with;
+use function substr;
 
 /**
  * Widget generates a string content based on some logic and input data.
