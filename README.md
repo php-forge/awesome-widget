@@ -15,15 +15,17 @@
 [![type-coverage](https://shepherd.dev/github/php-forge/widget/coverage.svg)](https://shepherd.dev/github/php-forge/widget)
 
 
-## Installation
+## Instalación
+
+```bash
 
 ```shell
 composer require php-forge/widget
 ```
 
-## Usage
+## Uso
 
-### Create a new widget without dependencies:
+### Crear un nuevo widget sin dependencias:
 
 ```php
 <?php
@@ -71,7 +73,7 @@ final class Widget extends AbstractWidget
 }
 ```
 
-Using in view:
+Uso en vista:
 
 ```php
 <?php
@@ -81,13 +83,15 @@ declare(strict_types=1);
 Widget::create()->id('id-test')->attributes(['class' => 'text-danger'])->render();
 ```
 
-Code generated:
+Código generado:
 
 ```html
 <id="id-test" class="text-danger">
 ```
 
-### Using widget in view with configuration:
+### Usar widget en vista con configuración
+
+Uso en view:
 
 ```php
 <?php
@@ -99,15 +103,15 @@ Widget::create(
 )->render();
 ```
 
-Code generated:
+Código generado:
 
 ```html
 <id="id-tests" class="test-class">
 ```
 
-### Using widget in view with config file:
+### Usar widget en vista con archivo de configuración
 
-Load config from file: `/config/ConfigWidget.php`:
+Cargar archivo de configuración desde: `/config/ConfigWidget.php`:
 
 ```php
 return [
@@ -119,6 +123,8 @@ return [
 ];
 ```
 
+Uso en view:
+
 ```php
 <?php
 
@@ -129,12 +135,12 @@ Widget::create(
 )->render();
 ```
 
-Code generated:
+Código generado:
 ```html
 <id="id-tests" class="test-class">
 ```
 
-### Create a new widget with depedencies injection:
+### Crear un nuevo widget con inyección de depedencia
 
 ```php
 <?php
@@ -166,7 +172,7 @@ final class Widget extends AbstractWidget
 }
 ```
 
-Using view:
+Uso en view:
 
 ```php
 <?php
@@ -182,12 +188,12 @@ Widget::create(
 )->id('w0')->render();
 ```
 
-Code generated:
+Código generado:
 ```html
 <id="w0" class="test-class">
 ```
 
-### Using widget load config file with `CONSTANT`:
+### Uso de archivo de configuración de witget con: `CONSTANT`
 
 Defined `CONSTANT`: `WIDGET_CONFIG_FILE`:
 
@@ -195,7 +201,7 @@ Defined `CONSTANT`: `WIDGET_CONFIG_FILE`:
 define('WIDGET_CONFIG_FILE', __DIR__ . '/config/ConfigWidget.php');
 ```
 
-Create file `/config/ConfigWidget.php`:
+Crear archivo `/config/ConfigWidget.php`:
 
 ```php
 <?php
@@ -211,28 +217,28 @@ return [
 ];
 ```
 
-## Unit testing
+## Análisis estático
 
-The package is tested with [PHPUnit](https://phpunit.de/). To run tests:
+El código se analiza estáticamente con [Psalm](https://psalm.dev/docs). Para ejecutarlo:
 
 ```shell
-./vendor/bin/phpunit
+./vendor/bin/psalm
 ```
 
-## Mutation testing
+## Pruebas de mutación
 
-The package tests are checked with [Infection](https://infection.github.io/) mutation framework. To run it:
+Las pruebas de mutación se comprueban con [Infection](https://infection.github.io/). Para ejecutarlo:
 
 ```shell
 ./vendor/bin/roave-infection-static-analysis-plugin
 ```
 
-## Static analysis
+## Pruebas unitarias
 
-The code is statically analyzed with [Psalm](https://psalm.dev/docs). To run static analysis:
+Las pruebas unitarias se comprueban con [PHPUnit](https://phpunit.de/). Para ejecutarlo:
 
 ```shell
-./vendor/bin/psalm
+./vendor/bin/phpunit
 ```
 
 ## Licencia
