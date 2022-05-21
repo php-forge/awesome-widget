@@ -193,7 +193,7 @@ Código generado:
 
 ### Uso de archivo de configuración de witget con: `CONSTANT`
 
-Defined `CONSTANT`: `WIDGET_CONFIG_FILE`:
+Definir `CONSTANT`: `WIDGET_CONFIG_FILE`:
 
 ```php
 define('WIDGET_CONFIG_FILE', __DIR__ . '/config/ConfigWidget.php');
