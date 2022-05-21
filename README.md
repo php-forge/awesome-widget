@@ -77,7 +77,6 @@ Using in view:
 <?php
 
 declare(strict_types=1);
-?>
 
 Widget::create()->id('id-test')->attributes(['class' => 'text-danger'])->render();
 ```
@@ -94,9 +93,10 @@ Code generated:
 <?php
 
 declare(strict_types=1);
-?>
 
-Widget::create(config: ['attributes()' => [['class' => 'test-class']], 'id()' => ['id-tests']])->render();
+Widget::create(
+    config: ['attributes()' => [['class' => 'test-class']], 'id()' => ['id-tests']],
+)->render();
 ```
 
 Code generated:
@@ -123,9 +123,10 @@ return [
 <?php
 
 declare(strict_types=1);
-?>
 
-Widget::create(loadConfigFile: __DIR__ . '/config/ConfigWidget.php')->render();
+Widget::create(
+    loadConfigFile: __DIR__ . '/config/ConfigWidget.php',
+)->render();
 ```
 
 Code generated:
@@ -175,7 +176,10 @@ declare(strict_types=1);
 use App\Widget;
 use Forge\Widget\Html\Attributes;
 
-Widget::create(config: ['attributes()' => [['class' => 'test-class']]], constructorArguments: [new Attributes()])->id('w0')->render();
+Widget::create(
+    config: ['attributes()' => [['class' => 'test-class']]],
+    constructorArguments: [new Attributes()],
+)->id('w0')->render();
 ```
 
 Code generated:
