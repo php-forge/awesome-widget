@@ -33,13 +33,13 @@ declare(strict_types=1);
 namespace App\Widget;
 
 use Forge\Widget\AbstractWidget;
-use Yiisoft\Html\Html;
+use Forge\Widget\Html\Attributes;
 
 final class Widget extends AbstractWidget
 {
     protected function run(): string
     {
-        return '<' . trim(html::renderTagAttributes($this->attributes)) . '>';
+        return '<' . trim((new Attributes())->render($this->attributes)) . '>';
     }
 
     public function id(string $value): self
@@ -143,17 +143,17 @@ declare(strict_types=1);
 namespace App\Widget;
 
 use Forge\Widget\AbstractWidget;
-use Yiisoft\Html\Html;
+use Forge\Widget\Html\Attributes;
 
 final class Widget extends AbstractWidget
 {
-    public function __construct(private HTML $html)
+    public function __construct(private Attributes $attributes)
     {
     }
 
     protected function run(): string
     {
-        return '<' . trim($this->html->renderTagAttributes($this->attributes)) . '>';
+        return '<' . trim($this->attributes->render($this->attributes)) . '>';
     }
 
     public function id(string $value): self
@@ -173,8 +173,9 @@ Using view:
 declare(strict_types=1);
 
 use App\Widget;
+use Forge\Widget\Html\Attributes;
 
-Widget::create(config: ['attributes()' => [['class' => 'test-class']]], constructorArguments: [new Html()])->id('w0')->render();
+Widget::create(config: ['attributes()' => [['class' => 'test-class']]], constructorArguments: [new Attributes()])->id('w0')->render();
 ```
 
 Code generated:
@@ -187,7 +188,7 @@ Code generated:
 Defined `CONSTANT`: `WIDGET_CONFIG_FILE`:
 
 ```php
-define('WIDGET_CONFIG_PATH', __DIR__ . '/config/ConfigWidget.php');
+define('WIDGET_CONFIG_FILE', __DIR__ . '/config/ConfigWidget.php');
 ```
 
 Create file `/config/ConfigWidget.php`:
