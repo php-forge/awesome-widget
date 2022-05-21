@@ -217,14 +217,19 @@ abstract class AbstractWidget
             $file = include $path;
             /** @var array */
             $definitions = isset($file[$shortName]) && is_array($file[$shortName]) ? $file[$shortName] : [];
-            $config = array_merge($definitions, $config);
+            $widget = $this->factory($definitions, $widget);
         }
 
+        return $this->factory($config, $widget);
+    }
+
+    private function factory(array $definitions, object $widget): object
+    {
         /**
-         * @var array<string, mixed> $config
+         * @var array<string, mixed> $definitions
          * @var mixed $arguments
          */
-        foreach ($config as $action => $arguments) {
+        foreach ($definitions as $action => $arguments) {
             if (str_ends_with($action, '()')) {
                 /** @var mixed */
                 $setter = call_user_func_array([$widget, substr($action, 0, -2)], $arguments);

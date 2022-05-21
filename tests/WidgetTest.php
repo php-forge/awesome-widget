@@ -147,6 +147,15 @@ final class WidgetTest extends TestCase
         $this->assertSame('<id="w0" class="text-danger">', $output->render());
     }
 
+    public function testWidgetWithLoadConfigFileWithConfig(): void
+    {
+        $output = Widget::create(
+            loadConfigFile: __DIR__ . '/Stubs/Config.php',
+            config: ['attributes()' => [['disable' => true]]]
+        )->id('w0');
+        $this->assertSame('<id="w0" class="text-danger" disable>', $output->render());
+    }
+
     public function testWidgetWithLoadConfigFileWithConstant(): void
     {
         define('WIDGET_CONFIG_FILE', __DIR__ . '/Stubs/ConfigWidget.php');
