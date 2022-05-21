@@ -8,6 +8,7 @@ jobs:
   infection:
     uses: php-forge/reusable-actions/.github/workflows/roave-infection.yml@main
     with:
+      extensions: runkit7-4.0.0-alpha
       os: >-
         ['ubuntu-latest']
       php: >-

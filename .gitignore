@@ -21,3 +21,6 @@ phpunit.phar
 
 # windows thumbnail cache
 Thumbs.db
+
+#vscode
+.vscode

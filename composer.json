@@ -1,29 +1,29 @@
 {
-    "name": "php-forge/template",
+    "name": "forge/widget",
     "type": "library",
-    "description": "_____",
+    "description": "Widget para PHP.",
     "keywords": [
-        "_____"
+        "php",
+        "widget"
     ],
     "license": "BSD-3-Clause",
-    "minimum-stability": "dev",
     "prefer-stable": true,
     "require": {
         "php": "^8.0"
     },
     "require-dev": {
-        "phpunit/phpunit": "*",
-        "roave/infection-static-analysis-plugin": "*",
-        "vimeo/psalm": "*"
+        "phpunit/phpunit": "^9.5",
+        "roave/infection-static-analysis-plugin": "^1.8",
+        "vimeo/psalm": "^4.23"
     },
     "autoload": {
         "psr-4": {
-            "Template\\": "src"
+            "Forge\\Widget\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Template\\Tests\\": "tests"
+            "Forge\\Widget\\Tests\\": "tests"
         }
     },
     "extra": {
@@ -32,6 +32,9 @@
         }
     },
     "config": {
-        "sort-packages": true
+        "sort-packages": true,
+        "allow-plugins": {
+            "infection/extension-installer": true
+        }
     }
 }
