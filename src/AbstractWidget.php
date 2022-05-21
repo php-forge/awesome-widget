@@ -39,7 +39,7 @@ abstract class AbstractWidget
      *
      * @var static[]
      */
-    private static array $stack;
+    private static array $stack = [];
 
     /**
      * The HTML attributes. The following special options are recognized.
