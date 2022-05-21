@@ -13,7 +13,6 @@ use function implode;
 use function in_array;
 use function is_array;
 use function is_bool;
-use function is_null;
 use function json_encode;
 use function rtrim;
 use function strtr;
@@ -101,7 +100,7 @@ final class Attributes
      */
     public function encodeAttribute(mixed $value, bool $doubleEncode = true, string $encoding = 'UTF-8'): string
     {
-        $value = htmlspecialchars((string) $value,self::HTMLSPECIALCHARS_OPTIONS, $encoding, $doubleEncode);
+        $value = htmlspecialchars((string) $value, self::HTMLSPECIALCHARS_OPTIONS, $encoding, $doubleEncode);
 
         return strtr($value, [
             "\u{0000}" => '&#0;', // U+0000 NULL
@@ -181,11 +180,10 @@ final class Attributes
         return match (true) {
             is_array($value) => $this->renderAttribute($name, json_encode($value, self::JSON_OPTIONS), '\''),
             is_bool($value) => ($value) ? $this->renderAttribute($name) : '',
-            is_null($value) => '',
+            null === $value => '',
             default => $this->renderAttribute($name, $this->encodeAttribute($value)),
         };
     }
-
 
     private function renderClassAttributes(string $name, array $value): string
     {
