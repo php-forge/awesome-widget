@@ -17,8 +17,6 @@
 
 ## Instalación
 
-```bash
-
 ```shell
 composer require php-forge/widget
 ```
