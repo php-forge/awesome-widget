@@ -6,14 +6,12 @@
     <br>
 </p>
 
-
 [![Total Downloads](https://poser.pugx.org/forge/widget/downloads.png)](https://packagist.org/packages/forge/widget)
 [![Build Status](https://github.com/php-forge/widget/workflows/build/badge.svg)](https://github.com/php-forge/widget/actions?query=workflow%3Abuild)
 [![codecov](https://codecov.io/gh/php-forge/widget/branch/main/graph/badge.svg?token=Hpxye21BHA)](https://codecov.io/gh/php-forge/widget)
 [![Mutation testing badge](https://img.shields.io/endpoint?style=flat&url=https%3A%2F%2Fbadge-api.stryker-mutator.io%2Fgithub.com%2Fyii-extension%2Fsimple-widget%2Fmaster)](https://dashboard.stryker-mutator.io/reports/github.com/php-forge/widget/master)
 [![static analysis](https://github.com/php-forge/widget/workflows/static%20analysis/badge.svg)](https://github.com/php-forge/widget/actions?query=workflow%3A%22static+analysis%22)
 [![type-coverage](https://shepherd.dev/github/php-forge/widget/coverage.svg)](https://shepherd.dev/github/php-forge/widget)
-
 
 ## Instalación
 
@@ -23,7 +21,7 @@ composer require php-forge/widget
 
 ## Uso
 
-### Crear un nuevo widget sin dependencias:
+### Crear un nuevo widget sin dependencias
 
 ```php
 <?php

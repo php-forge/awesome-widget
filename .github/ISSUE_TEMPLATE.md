@@ -1,14 +1,12 @@
-### ¿Qué pasos reproducirán el problema?
+# Reportar un problema
 
+## ¿Qué pasos reproducirán el problema?
 
-### ¿Cuál es el resultado esperado?
+## ¿Cuál es el resultado esperado?
 
+## ¿Qué se obtiene en su lugar?
 
-### ¿Qué se obtiene en su lugar?
-
-
-### Información adicional
-
+## Información adicional
 
 | Q                 | A   |
 |-------------------|-----|
