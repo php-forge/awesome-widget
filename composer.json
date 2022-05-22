@@ -6,10 +6,12 @@
         "php",
         "widget"
     ],
-    "license": "BSD-3-Clause",
+    "license": "BSD-4-Clause",
+    "minimum-stability": "dev",
     "prefer-stable": true,
     "require": {
-        "php": "^8.0"
+        "php": "^8.0",
+        "forge/html": "^1.0"
     },
     "require-dev": {
         "phpunit/phpunit": "^9.5",

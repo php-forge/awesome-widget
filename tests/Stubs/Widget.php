@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Forge\Widget\Tests\Stubs;
 
+use Forge\Html\Attributes;
 use Forge\Widget\AbstractWidget;
-use Forge\Widget\Html\Attributes;
 
 final class Widget extends AbstractWidget
 {
