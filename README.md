@@ -7,6 +7,7 @@
 </p>
 
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/3255dc22def345ad8553c2f787605aa8)](https://app.codacy.com/gh/php-forge/widget?utm_source=github.com&utm_medium=referral&utm_content=php-forge/widget&utm_campaign=Badge_Grade_Settings)
 [![Total Downloads](https://poser.pugx.org/forge/widget/downloads.png)](https://packagist.org/packages/forge/widget)
 [![Build Status](https://github.com/php-forge/widget/workflows/build/badge.svg)](https://github.com/php-forge/widget/actions?query=workflow%3Abuild)
 [![codecov](https://codecov.io/gh/php-forge/widget/branch/main/graph/badge.svg?token=Hpxye21BHA)](https://codecov.io/gh/php-forge/widget)
