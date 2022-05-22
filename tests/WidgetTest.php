@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Forge\Widget\Tests;
 
-use Forge\Widget\Html\Attributes;
+use Forge\Html\Attributes;
 use Forge\Widget\Tests\Stubs\Immutable;
 use Forge\Widget\Tests\Stubs\Widget;
 use Forge\Widget\Tests\Stubs\WidgetA;
