@@ -16,7 +16,7 @@
 ## Instalación
 
 ```shell
-composer require php-forge/widget
+composer require forge/widget
 ```
 
 ## Uso
