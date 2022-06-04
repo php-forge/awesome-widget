@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Forge\Widget\Tests;
 
-use Forge\Html\Attributes;
+use Forge\Html\Attribute\Attributes;
 use Forge\Widget\Tests\Stubs\Immutable;
 use Forge\Widget\Tests\Stubs\Widget;
 use Forge\Widget\Tests\Stubs\WidgetA;
@@ -27,7 +27,7 @@ final class WidgetTest extends TestCase
     {
         Widget::create()->id('id-test')->attributes(['class' => 'text-danger'])->begin();
         $output = Widget::end();
-        $this->assertSame('<id="id-test" class="text-danger">', $output);
+        $this->assertSame('<class="text-danger" id="id-test">', $output);
     }
 
     public function testBeforeRun(): void
@@ -132,7 +132,7 @@ final class WidgetTest extends TestCase
     public function testWidgetWithConfig(): void
     {
         $output = Widget::create(config: ['attributes()' => [['class' => 'test-class']]])->id('w0');
-        $this->assertSame('<id="w0" class="test-class">', $output->render());
+        $this->assertSame('<class="test-class" id="w0">', $output->render());
     }
 
     public function testWidgetWithConstructor(): void
@@ -144,7 +144,7 @@ final class WidgetTest extends TestCase
     public function testWidgetWithLoadConfigFile(): void
     {
         $output = Widget::create(loadConfigFile: __DIR__ . '/Stubs/Config.php')->id('w0');
-        $this->assertSame('<id="w0" class="text-danger">', $output->render());
+        $this->assertSame('<class="text-danger" id="w0">', $output->render());
     }
 
     public function testWidgetWithLoadConfigFileWithConfig(): void
@@ -153,14 +153,14 @@ final class WidgetTest extends TestCase
             loadConfigFile: __DIR__ . '/Stubs/Config.php',
             config: ['attributes()' => [['disable' => true]]]
         )->id('w0');
-        $this->assertSame('<id="w0" class="text-danger" disable>', $output->render());
+        $this->assertSame('<class="text-danger" id="w0" disable>', $output->render());
     }
 
     public function testWidgetWithLoadConfigFileWithConstant(): void
     {
         define('WIDGET_CONFIG_FILE', __DIR__ . '/Stubs/ConfigWidget.php');
         $output = Widget::create()->id('w0');
-        $this->assertSame('<id="w0" class="text-danger">', $output->render());
+        $this->assertSame('<class="text-danger" id="w0">', $output->render());
         runkit7_constant_remove('WIDGET_CONFIG_FILE');
     }
 
