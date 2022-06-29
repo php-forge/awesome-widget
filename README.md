@@ -127,7 +127,7 @@ Uso en vista:
 declare(strict_types=1);
 
 Widget::create(
-    loadConfigFile: __DIR__ . '/config/ConfigWidget.php',
+    configFile: __DIR__ . '/config/ConfigWidget.php',
 )->render();
 ```
 
@@ -180,7 +180,7 @@ use Forge\Html\Attributes;
 
 Widget::create(
     config: ['attributes()' => [['class' => 'test-class']]],
-    constructorArguments: [new Attributes()],
+    construct: [new Attributes()],
 )->id('w0')->render();
 ```
 

@@ -137,20 +137,20 @@ final class WidgetTest extends TestCase
 
     public function testWidgetWithConstructor(): void
     {
-        $output = Widget::create(constructorArguments: [new Attributes()])->id('w0');
+        $output = Widget::create(construct: [new Attributes()])->id('w0');
         $this->assertSame('<id="w0">', $output->render());
     }
 
     public function testWidgetWithLoadConfigFile(): void
     {
-        $output = Widget::create(loadConfigFile: __DIR__ . '/Stubs/Config.php')->id('w0');
+        $output = Widget::create(configFile: __DIR__ . '/Stubs/Config.php')->id('w0');
         $this->assertSame('<class="text-danger" id="w0">', $output->render());
     }
 
     public function testWidgetWithLoadConfigFileWithConfig(): void
     {
         $output = Widget::create(
-            loadConfigFile: __DIR__ . '/Stubs/Config.php',
+            configFile: __DIR__ . '/Stubs/Config.php',
             config: ['attributes()' => [['disable' => true]]]
         )->id('w0');
         $this->assertSame('<class="text-danger" id="w0" disable>', $output->render());

@@ -90,26 +90,23 @@ abstract class AbstractWidget
     /**
      * Creates a widget instance.
      *
-     * @param string $loadConfigFile The file path to load configuration from (if any).
+     * @param string $configFile The file path to load configuration from (if any).
      * @param array $config The configuration array for factory.
-     * @param array $constructorArguments The constructor arguments for the widget.
+     * @param array $construct The constructor arguments for the widget.
      *
-     * @psalm-param array<int, mixed> $constructorArguments
+     * @psalm-param array<int, mixed> $construct
      *
      * @throws ReflectionException
      *
      * @return static widget instance
      */
-    final public static function create(
-        string $loadConfigFile = '',
-        array $config = [],
-        array $constructorArguments = []
-    ): static {
+    final public static function create(string $configFile = '', array $config = [], array $construct = []): static {
         $reflection = new ReflectionClass(static::class);
         $shortName = $reflection->getShortName();
-        $widget = $reflection->newInstanceArgs($constructorArguments);
+        $widget = $reflection->newInstanceArgs($construct);
+
         /** @var static */
-        return $widget->configure($widget, $config, $shortName, $loadConfigFile);
+        return $widget->configure($widget, $config, $shortName, $configFile);
     }
 
     /**
