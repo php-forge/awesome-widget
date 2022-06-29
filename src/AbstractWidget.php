@@ -100,7 +100,8 @@ abstract class AbstractWidget
      *
      * @return static widget instance
      */
-    final public static function create(string $configFile = '', array $config = [], array $construct = []): static {
+    final public static function create(string $configFile = '', array $config = [], array $construct = []): static
+    {
         $reflection = new ReflectionClass(static::class);
         $shortName = $reflection->getShortName();
         $widget = $reflection->newInstanceArgs($construct);
