@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace PHPForge\Widget\Tests\Support\Widget;
 
+use PHPForge\Html\Helper\Attributes;
 use PHPForge\Widget\AbstractWidget;
 use PHPForge\Widget\Attribute;
-use Yii\Html\Helper\Attributes;
 
 final class Widget extends AbstractWidget
 {

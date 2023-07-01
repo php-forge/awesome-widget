@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace PHPForge\Widget\Attribute;
 
-use Yii\Html\Tag;
+use PHPForge\Html\Tag;
 
 /**
  * Is used by widgets that can have a prompt option.

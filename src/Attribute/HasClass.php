@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace PHPForge\Widget\Attribute;
 
-use Yii\Html\Helper\CssClass;
+use PHPForge\Html\Helper\CssClass;
 
 /**
  * Is used by widgets which have a class attribute.

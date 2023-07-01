@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace PHPForge\Widget\Attribute\Custom;
 
-use Yii\Html\Helper\CssClass;
+use PHPForge\Html\Helper\CssClass;
 
 /**
  * Provides methods to configure the label for the widget.

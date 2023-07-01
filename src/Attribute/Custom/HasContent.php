@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace PHPForge\Widget\Attribute\Custom;
 
+use PHPForge\Html\Helper\Encode;
 use PHPForge\Widget\WidgetInterface;
 use Stringable;
-use Yii\Html\Helper\Encode;
 
 /**
  * Is used by widgets which have content value.
