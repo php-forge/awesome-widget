@@ -1,253 +1,79 @@
 <p align="center">
-    <a href="https://github.com/php-forge/widget" target="_blank">
-        <img src="https://avatars.githubusercontent.com/u/103309199?s=400&u=ca3561c692f53ed7eb290d3bb226a2828741606f&v=4" height="100px">
+    <a href="https://github.com/php-forge/awesome-widget" target="_blank">
+        <img src="https://avatars.githubusercontent.com/u/103309199?s%253D400%2526u%253Dca3561c692f53ed7eb290d3bb226a2828741606f%2526v%253D4" height="100px">
     </a>
-    <h1 align="center">PHP Forge - Widget</h1>
+    <a href="https://github.com/php-forge/awesome-widget" target="_blank">
+        <img src="https://cdn-icons-png.flaticon.com/512/5762/5762492.png" height="100px">
+    </a>    
+    <h1 align="center">Foundation Classes and Components for Awesome Widget</h1>
     <br>
 </p>
 
-[![Total Downloads](https://poser.pugx.org/forge/widget/downloads.png)](https://packagist.org/packages/forge/widget)
-[![Build Status](https://github.com/php-forge/widget/workflows/build/badge.svg)](https://github.com/php-forge/widget/actions?query=workflow%3Abuild)
-[![codecov](https://codecov.io/gh/php-forge/widget/branch/main/graph/badge.svg?token=Hpxye21BHA)](https://codecov.io/gh/php-forge/widget)
-[![Mutation testing badge](https://img.shields.io/endpoint?style=flat&url=https%3A%2F%2Fbadge-api.stryker-mutator.io%2Fgithub.com%2Fyii-extension%2Fsimple-widget%2Fmaster)](https://dashboard.stryker-mutator.io/reports/github.com/php-forge/widget/master)
-[![static analysis](https://github.com/php-forge/widget/workflows/static%20analysis/badge.svg)](https://github.com/php-forge/widget/actions?query=workflow%3A%22static+analysis%22)
-[![type-coverage](https://shepherd.dev/github/php-forge/widget/coverage.svg)](https://shepherd.dev/github/php-forge/widget)
+## Requirements
 
-## Instalación
+The minimun version of `PHP` required by this package is `PHP 8.1`.
 
-```shell
-composer require forge/widget
-```
+For install this package, you need [composer](https://getcomposer.org/).
 
-## Uso
-
-### Crear un nuevo widget sin dependencias
-
-```php
-<?php
-
-declare(strict_types=1);
-
-namespace App\Widget;
-
-use Forge\Html\Attributes;
-use Forge\Widget\AbstractWidget;
-
-final class Widget extends AbstractWidget
-{
-    protected function run(): string
-    {
-        return '<' . trim((new Attributes())->render($this->attributes)) . '>';
-    }
-
-    public function id(string $value): self
-    {
-        $new = clone $this;
-        $new->attributes['id'] = $value;
-        return $new;
-    }
-
-    protected function beforeRun(): bool
-    {
-        if (isset($this->attributes['id']) && $this->attributes['id'] === 'beforerun') {
-            return false;
-        }
-
-        return parent::beforeRun();
-    }
-
-    protected function afterRun(string $result): string
-    {
-        $result = parent::afterRun($result);
-
-        if (isset($this->attributes['id']) && $this->attributes['id'] === 'afterrun') {
-            $result = '<div>' . $result . '</div>';
-        }
-
-        return $result;
-    }
-}
-```
-
-Uso en vista:
-
-```php
-<?php
-
-declare(strict_types=1);
-
-Widget::create()->id('id-test')->attributes(['class' => 'text-danger'])->render();
-```
-
-Código generado:
-
-```html
-<id="id-test" class="text-danger">
-```
-
-### Usar widget en vista con configuración
-
-Uso en vista:
-
-```php
-<?php
-
-declare(strict_types=1);
-
-Widget::create(
-    config: ['attributes()' => [['class' => 'test-class']], 'id()' => ['id-tests']],
-)->render();
-```
-
-Código generado:
-
-```html
-<id="id-tests" class="test-class">
-```
-
-### Usar widget en vista con archivo de configuración
-
-Cargar archivo de configuración desde: `/config/ConfigWidget.php`:
-
-```php
-return [
-    // Sintax for array shortNameWidget => [method() => [$value]
-    'Widget' => [
-        'attributes()' => ['class' => 'test-class'],
-        'id()' => 'id-tests',
-    ],
-];
-```
-
-Uso en vista:
-
-```php
-<?php
-
-declare(strict_types=1);
-
-Widget::create(
-    configFile: __DIR__ . '/config/ConfigWidget.php',
-)->render();
-```
-
-Código generado:
-```html
-<id="id-tests" class="test-class">
-```
-
-### Crear un nuevo widget con inyección de depedencia
-
-```php
-<?php
-
-declare(strict_types=1);
-
-namespace App\Widget;
-
-use Forge\Html\Attributes;
-use Forge\Widget\AbstractWidget;
-
-final class Widget extends AbstractWidget
-{
-    public function __construct(private Attributes $attributes)
-    {
-    }
-
-    protected function run(): string
-    {
-        return '<' . trim($this->attributes->render($this->attributes)) . '>';
-    }
-
-    public function id(string $value): self
-    {
-        $new = clone $this;
-        $new->attributes['id'] = $value;
-        return $new;
-    }
-}
-```
-
-Uso en vista:
-
-```php
-<?php
-
-declare(strict_types=1);
-
-use App\Widget;
-use Forge\Html\Attributes;
-
-Widget::create(
-    config: ['attributes()' => [['class' => 'test-class']]],
-    construct: [new Attributes()],
-)->id('w0')->render();
-```
-
-Código generado:
-```html
-<id="w0" class="test-class">
-```
-
-### Uso de archivo de configuración de witget con: `CONSTANT`
-
-Definir `CONSTANT`: `WIDGET_CONFIG_FILE`:
-
-```php
-define('WIDGET_CONFIG_FILE', __DIR__ . '/config/ConfigWidget.php');
-```
-
-Crear archivo `/config/ConfigWidget.php`:
-
-```php
-<?php
-
-declare(strict_types=1);
-
-return [
-    // Sintax for array shortNameWidget => [method() => [$value]
-    'Widget' => [
-        'attributes()' => [['class' => 'test-class']],
-        'id()' => ['id-tests'],
-    ],
-];
-```
-
-## Análisis estático
-
-El código se analiza estáticamente con [Psalm](https://psalm.dev/docs). Para ejecutarlo:
+## Install
 
 ```shell
-./vendor/bin/psalm
+composer require php-forge/awesome-widget
 ```
 
-## Pruebas de mutación
+## Usage
 
-Las pruebas de mutación se comprueban con [Infection](https://infection.github.io/). Para ejecutarlo:
+[Check the documentation docs](/docs/widget.md) to learn about usage.
+
+## Testing
+
+### Checking dependencies
+
+This package uses [composer-require-checker](https://github.com/maglnet/ComposerRequireChecker) to check if all dependencies are correctly defined in `composer.json`.
+
+To run the checker, execute the following command:
 
 ```shell
-./vendor/bin/roave-infection-static-analysis-plugin
+composer run check-dependencies
 ```
 
-## Pruebas unitarias
+### Mutation testing
 
-Las pruebas unitarias se comprueban con [PHPUnit](https://phpunit.de/). Para ejecutarlo:
+Mutation testing is checked with [Infection](https://infection.github.io/). To run it:
 
 ```shell
-./vendor/bin/phpunit
+composer run mutation
 ```
-## Calidad y estilo de código
 
-[![Codacy Badge](https://app.codacy.com/project/badge/Grade/1aa3540f0a5a4e649514b57e99dea9da)](https://www.codacy.com/gh/php-forge/widget/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=php-forge/widget&amp;utm_campaign=Badge_Grade)
-[![StyleCI](https://github.styleci.io/repos/494784194/shield?branch=main)](https://github.styleci.io/repos/494784194?branch=main)
+### Static analysis
 
-## Licencia
+The code is statically analyzed with [Psalm](https://psalm.dev/). To run static analysis:
 
-El paquete `php-forge/widget` es software libre. Se publica bajo los términos de la Licencia BSD.
-Consulte [`LICENSE`](./LICENSE) para obtener más información.
+```shell
+composer run psalm
+```
 
-Mantenido por [Terabytesoftw](https://github.com/terabytesoftw).
+### Unit tests
 
-## Nuestras redes sociales
+The code is tested with [PHPUnit](https://phpunit.de/). To run tests:
 
-[![Twitter](https://img.shields.io/badge/twitter-follow-1DA1F2?logo=twitter&logoColor=1DA1F2&labelColor=555555?style=flat)](https://twitter.com/PhpForge)
+```
+composer run test
+```
+
+## CI status
+
+[![build](https://github.com/php-forge/awesome-widget/actions/workflows/build.yml/badge.svg)](https://github.com/php-forge/awesome-widget/actions/workflows/build.yml)
+[![codecov](https://codecov.io/gh/php-forge/awesome-widget/branch/main/graph/badge.svg?token=Hpxye21BHA)](https://codecov.io/gh/php-forge/awesome-widget)
+[![Mutation testing badge](https://img.shields.io/endpoint?style=flat&url=https%3A%2F%2Fbadge-api.stryker-mutator.io%2Fgithub.com%2Fphp-forge%2Fawesome-widget%2Fmain)](https://dashboard.stryker-mutator.io/reports/github.com/php-forge/awesome-widget/main)
+[![static analysis](https://github.com/php-forge/awesome-widget/actions/workflows/static.yml/badge.svg)](https://github.com/php-forge/awesome-widget/actions/workflows/static.yml)
+[![type-coverage](https://shepherd.dev/github/php-forge/awesome-widget/coverage.svg)](https://shepherd.dev/github/php-forge/awesome-widget)
+[![StyleCI](https://github.styleci.io/repos/597381615/shield?branch=main)](https://github.styleci.io/repos/597381615?branch=main)
+
+## Our social networks
+
+[![Twitter](https://img.shields.io/badge/twitter-follow-1DA1F2?logo=twitter&logoColor=1DA1F2&labelColor=555555?style=flat)](https://twitter.com/Terabytesoftw)
+
+## License
+
+The MIT License (MIT). Please see [License File](LICENSE.md) for more information.

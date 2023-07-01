@@ -1,17 +1,31 @@
 on:
-  - pull_request
-  - push
+  pull_request:
+    paths-ignore:
+      - 'docs/**'
+      - 'README.md'
+      - 'CHANGELOG.md'
+      - '.gitignore'
+      - '.gitattributes'
+      - 'psalm.xml'
+
+  push:
+    paths-ignore:
+      - 'docs/**'
+      - 'README.md'
+      - 'CHANGELOG.md'
+      - '.gitignore'
+      - '.gitattributes'
+      - 'psalm.xml'
 
 name: mutation test
 
 jobs:
-  infection:
-    uses: php-forge/reusable-actions/.github/workflows/roave-infection.yml@main
+  mutation:
+    uses: php-forge/actions/.github/workflows/roave-infection.yml@main
+    secrets:
+      STRYKER_DASHBOARD_API_KEY: ${{ secrets.STRYKER_DASHBOARD_API_KEY }}
     with:
-      extensions: runkit7-4.0.0-alpha
       os: >-
         ['ubuntu-latest']
       php: >-
         ['8.1']
-    secrets:
-      STRYKER_DASHBOARD_API_KEY: ${{ secrets.STRYKER_DASHBOARD_API_KEY }}

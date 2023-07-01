@@ -1,28 +1,24 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/10.2/phpunit.xsd"
+    bootstrap="vendor/autoload.php"
+    cacheDirectory=".phpunit.cache"
+    colors="true"
+    executionOrder="depends,defects"
+    failOnRisky="true"
+    failOnWarning="true"
+    stopOnFailure="false"
+>
+    <testsuites>
+        <testsuite name="AwesomeWidget">
+            <directory>tests</directory>
+        </testsuite>
+    </testsuites>
 
-<phpunit bootstrap="vendor/autoload.php"
-         colors="true"
-         verbose="true"
-         convertErrorsToExceptions="true"
-         convertNoticesToExceptions="true"
-         convertWarningsToExceptions="true"
-         stopOnFailure="false">
-  <php>
-    <ini name="error_reporting" value="-1" />
-  </php>
-
-  <coverage>
-    <include>
-      <directory>./src</directory>
-    </include>
-    <exclude>
-      <directory>./vendor</directory>
-    </exclude>
-  </coverage>
-
-  <testsuites>
-    <testsuite name="Widget">
-      <directory>./tests</directory>
-    </testsuite>
-  </testsuites>
+    <source>
+        <include>
+            <directory suffix=".php">./src</directory>
+        </include>
+    </source>
 </phpunit>
