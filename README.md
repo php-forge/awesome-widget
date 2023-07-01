@@ -23,43 +23,11 @@ composer require php-forge/awesome-widget
 
 ## Usage
 
-[Check the documentation docs](/docs/widget.md) to learn about usage.
+[Check the documentation docs](/docs/README.md) to learn about usage.
 
 ## Testing
 
-### Checking dependencies
-
-This package uses [composer-require-checker](https://github.com/maglnet/ComposerRequireChecker) to check if all dependencies are correctly defined in `composer.json`.
-
-To run the checker, execute the following command:
-
-```shell
-composer run check-dependencies
-```
-
-### Mutation testing
-
-Mutation testing is checked with [Infection](https://infection.github.io/). To run it:
-
-```shell
-composer run mutation
-```
-
-### Static analysis
-
-The code is statically analyzed with [Psalm](https://psalm.dev/). To run static analysis:
-
-```shell
-composer run psalm
-```
-
-### Unit tests
-
-The code is tested with [PHPUnit](https://phpunit.de/). To run tests:
-
-```
-composer run test
-```
+[Check the documentation testing](/docs/testing.md) to learn about testing.
 
 ## CI status
 
@@ -68,7 +36,7 @@ composer run test
 [![Mutation testing badge](https://img.shields.io/endpoint?style=flat&url=https%3A%2F%2Fbadge-api.stryker-mutator.io%2Fgithub.com%2Fphp-forge%2Fawesome-widget%2Fmain)](https://dashboard.stryker-mutator.io/reports/github.com/php-forge/awesome-widget/main)
 [![static analysis](https://github.com/php-forge/awesome-widget/actions/workflows/static.yml/badge.svg)](https://github.com/php-forge/awesome-widget/actions/workflows/static.yml)
 [![type-coverage](https://shepherd.dev/github/php-forge/awesome-widget/coverage.svg)](https://shepherd.dev/github/php-forge/awesome-widget)
-[![StyleCI](https://github.styleci.io/repos/597381615/shield?branch=main)](https://github.styleci.io/repos/597381615?branch=main)
+[![StyleCI](https://github.styleci.io/repos/494784194/shield?branch=main)](https://github.styleci.io/repos/494784194?branch=main)
 
 ## Our social networks
 
