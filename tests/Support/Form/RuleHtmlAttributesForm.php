@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace PHPForge\Widget\Tests\Support\Form;
 
-use Yii\FormModel\AbstractFormModel;
-use Yii\FormModel\FormModelInterface;
+use PHPForge\FormModel\AbstractFormModel;
+use PHPForge\FormModel\FormModelInterface;
 
 final class RuleHtmlAttributesForm extends AbstractFormModel
 {
