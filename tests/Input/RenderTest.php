@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace PHPForge\Widget\Tests\Input;
 
+use PHPForge\Support\Assert;
 use PHPForge\Widget\Tests\Support\Form\RuleHtmlAttributesForm;
 use PHPForge\Widget\Tests\Support\Form\TestForm;
 use PHPForge\Widget\Tests\Support\Widget\InputWidget;
 use PHPUnit\Framework\TestCase;
 use Stringable;
-use Yii\Support\Assert;
 
 /**
  * @psalm-suppress PropertyNotSetInConstructor
