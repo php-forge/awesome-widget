@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace PHPForge\Widget;
 
+use PHPForge\FormModel\FormModelInterface;
 use PHPForge\Html\Helper\Utils;
 use PHPForge\Html\Tag;
 use PHPForge\Widget\Exception\AttributeNotSet;
-use Yii\FormModel\FormModelInterface;
 
 use function implode;
 

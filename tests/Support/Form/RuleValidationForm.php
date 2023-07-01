@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace PHPForge\Widget\Tests\Support\Form;
 
-use Yii\FormModel\AbstractFormModel;
+use PHPForge\FormModel\AbstractFormModel;
 
 final class RuleValidationForm extends AbstractFormModel
 {

@@ -11,8 +11,8 @@
     "prefer-stable": true,
     "require": {
         "php": "^8.1",
-        "php-forge/html": "^1.0@dev",
-        "yii-tools/form-model": "^1.0@dev"
+        "php-forge/form-model": "^1.0@dev",
+        "php-forge/html": "^1.0@dev"
     },
     "require-dev": {
         "maglnet/composer-require-checker": "^4.3",
