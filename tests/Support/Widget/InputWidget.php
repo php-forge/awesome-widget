@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace PHPForge\Widget\Tests\Support\Widget;
 
+use PHPForge\Html\Tag;
 use PHPForge\Widget\AbstractInputWidget;
 use PHPForge\Widget\Attribute;
-use Yii\Html\Tag;
 
 final class InputWidget extends AbstractInputWidget
 {
