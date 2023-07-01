@@ -64,7 +64,7 @@ composer run test
 ## CI status
 
 [![build](https://github.com/php-forge/awesome-widget/actions/workflows/build.yml/badge.svg)](https://github.com/php-forge/awesome-widget/actions/workflows/build.yml)
-[![codecov](https://codecov.io/gh/php-forge/awesome-widget/branch/main/graph/badge.svg?token=MF0XUGVLYC)](https://codecov.io/gh/php-forge/awesome-widget)
+[![codecov](https://codecov.io/gh/php-forge/awesome-widget/branch/main/graph/badge.svg?token=Hpxye21BHA)](https://codecov.io/gh/php-forge/awesome-widget)
 [![Mutation testing badge](https://img.shields.io/endpoint?style=flat&url=https%3A%2F%2Fbadge-api.stryker-mutator.io%2Fgithub.com%2Fphp-forge%2Fawesome-widget%2Fmain)](https://dashboard.stryker-mutator.io/reports/github.com/php-forge/awesome-widget/main)
 [![static analysis](https://github.com/php-forge/awesome-widget/actions/workflows/static.yml/badge.svg)](https://github.com/php-forge/awesome-widget/actions/workflows/static.yml)
 [![type-coverage](https://shepherd.dev/github/php-forge/awesome-widget/coverage.svg)](https://shepherd.dev/github/php-forge/awesome-widget)
