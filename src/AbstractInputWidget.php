@@ -155,7 +155,7 @@ abstract class AbstractInputWidget extends AbstractWidget
         $prefix = $this->prefix;
         $suffix = $this->suffix;
 
-        if ($prefix !== '' && $type !== 'checkbox') {
+        if ($prefix !== '' && $type !== 'checkbox' && $type !== 'radio') {
             $prefix .= PHP_EOL;
         }
 
@@ -167,7 +167,7 @@ abstract class AbstractInputWidget extends AbstractWidget
             $attributes['name'] = Utils::generateInputName($this->formModel->getFormName(), $this->attribute);
         }
 
-        if ($suffix !== '' && $type !== 'checkbox') {
+        if ($suffix !== '' && $type !== 'checkbox' && $type !== 'radio') {
             $suffix = PHP_EOL . $suffix;
         }
 
