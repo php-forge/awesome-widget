@@ -37,6 +37,7 @@ final class ImmutabilityTest extends TestCase
         $this->assertNotSame($inputWidget, $inputWidget->label(''));
         $this->assertNotSame($inputWidget, $inputWidget->labelAttributes());
         $this->assertNotSame($inputWidget, $inputWidget->labelClass(''));
+        $this->assertNotSame($inputWidget, $inputWidget->labelFor(''));
         $this->assertNotSame($inputWidget, $inputWidget->max(0));
         $this->assertNotSame($inputWidget, $inputWidget->maxLength(0));
         $this->assertNotSame($inputWidget, $inputWidget->min(''));
