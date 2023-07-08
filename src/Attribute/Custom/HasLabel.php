@@ -54,6 +54,19 @@ trait HasLabel
     }
 
     /**
+     * Returns a new instance specifying the `HTML` label `for` attribute.
+     *
+     * @param string|null $value The value for the `for` attribute.
+     */
+    public function labelFor(string|null $value): static
+    {
+        $new = clone $this;
+        $new->labelAttributes['for'] = $value;
+
+        return $new;
+    }
+
+    /**
      * Returns a new instance specifying when the label its disabled.
      */
     public function notLabel(): static
