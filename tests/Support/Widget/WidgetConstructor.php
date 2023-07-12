@@ -10,43 +10,26 @@ use PHPForge\Widget\Attribute;
 
 final class WidgetConstructor extends AbstractWidget
 {
-    use Attribute\Custom\HasAttributes;
-    use Attribute\Custom\HasContent;
-    use Attribute\Custom\HasData;
-    use Attribute\Custom\HasItems;
-    use Attribute\Custom\HasTagName;
-    use Attribute\Custom\HasTemplate;
-    use Attribute\HasAutocomplete;
-    use Attribute\HasCols;
-    use Attribute\HasCrossorigin;
-    use Attribute\HasDownload;
-    use Attribute\HasGroup;
-    use Attribute\HasHref;
-    use Attribute\HasHreflang;
-    use Attribute\HasId;
-    use Attribute\HasIsmap;
-    use Attribute\HasLoading;
-    use Attribute\HasPing;
-    use Attribute\HasReferrerpolicy;
-    use Attribute\HasRel;
-    use Attribute\HasRows;
-    use Attribute\HasSizes;
-    use Attribute\HasSrcset;
-    use Attribute\HasTarget;
-    use Attribute\HasWrap;
 
     protected array $attributes = [];
-    protected string $template = '';
 
     public function __construct(private Attributes $attributesHelper, array $definitions = [])
     {
         parent::__construct($definitions);
     }
 
-    public function addAttribute(string $attribute, string $value): self
+    public function attributes(array $values): self
     {
         $new = clone $this;
-        $new->attributes[$attribute] = $value;
+        $new->attributes = $values;
+
+        return $new;
+    }
+
+    public function id(string $id): self
+    {
+        $new = clone $this;
+        $new->attributes['id'] = $id;
 
         return $new;
     }
@@ -73,20 +56,6 @@ final class WidgetConstructor extends AbstractWidget
 
     protected function run(): string
     {
-        $html = '';
-
-        if ($this->tagName !== '') {
-            $html = $this->tagName;
-        }
-
-        $html .= trim($this->attributesHelper->render($this->attributes));
-
-        if ($this->content !== '' && $html !== '') {
-            $html .= $this->content . ' ' . $html;
-        } elseif ($this->content !== '') {
-            $html .= $this->content;
-        }
-
-        return '<' . $html . '>';
+        return '<' . trim($this->attributesHelper->render($this->attributes)) . '>';
     }
 }

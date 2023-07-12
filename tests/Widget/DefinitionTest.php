@@ -14,9 +14,6 @@ final class DefinitionTest extends TestCase
 {
     public function testRender(): void
     {
-        $this->assertSame(
-            '<class="test-class">',
-            Widget::widget(['addAttribute()' => ['class', 'test-class']])->render(),
-        );
+        $this->assertSame('<id="test-id">', Widget::widget(['id()' => ['test-id']])->render());
     }
 }
