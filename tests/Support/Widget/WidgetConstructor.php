@@ -6,11 +6,9 @@ namespace PHPForge\Widget\Tests\Support\Widget;
 
 use PHPForge\Html\Helper\Attributes;
 use PHPForge\Widget\AbstractWidget;
-use PHPForge\Widget\Attribute;
 
 final class WidgetConstructor extends AbstractWidget
 {
-
     protected array $attributes = [];
 
     public function __construct(private Attributes $attributesHelper, array $definitions = [])
