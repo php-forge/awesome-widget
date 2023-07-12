@@ -22,7 +22,7 @@ final class ConstructorTest extends TestCase
 
     public function testConstructorWithDefinitions(): void
     {
-        $output = WidgetConstructor::widget(new Attributes(), ['addAttribute()' => ['id', 'w1']]);
+        $output = WidgetConstructor::widget(new Attributes(), ['id()' => ['w1']]);
 
         $this->assertSame('<id="w1">', $output->render());
     }
