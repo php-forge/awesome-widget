@@ -25,20 +25,6 @@ abstract class AbstractBaseWidget implements WidgetInterface
     }
 
     /**
-     * Renders widget content.
-     *
-     * This method is used by {@see render()} and is meant to be overridden when implementing concrete widget.
-     */
-    abstract protected function run(): string;
-
-    public function begin(): string
-    {
-        self::$stack[] = $this;
-
-        return '';
-    }
-
-    /**
      * Allows not to call `->render()` explicitly:
      *
      * ```php
@@ -49,4 +35,18 @@ abstract class AbstractBaseWidget implements WidgetInterface
     {
         return $this->run();
     }
+
+    public function begin(): string
+    {
+        self::$stack[] = $this;
+
+        return '';
+    }
+
+    /**
+     * Renders widget content.
+     *
+     * This method is used by {@see render()} and is meant to be overridden when implementing concrete widget.
+     */
+    abstract protected function run(): string;
 }
