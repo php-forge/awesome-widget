@@ -19,6 +19,7 @@ abstract class AbstractBaseWidget implements WidgetInterface
      * @var static[]
      */
     protected static array $stack = [];
+    private bool $beginExecuted = false;
 
     public function __construct(protected readonly array $definitions = [])
     {
@@ -39,8 +40,14 @@ abstract class AbstractBaseWidget implements WidgetInterface
     public function begin(): string
     {
         self::$stack[] = $this;
+        $this->beginExecuted = true;
 
         return '';
+    }
+
+    public function isBeginExecuted(): bool
+    {
+        return $this->beginExecuted;
     }
 
     /**
