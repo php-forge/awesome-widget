@@ -23,6 +23,13 @@ interface WidgetInterface extends Stringable
     public function begin(): string;
 
     /**
+     * Checks that the widget was opened with {@see begin()}.
+     *
+     * @return bool Whether the widget was opened with {@see begin()}.
+     */
+    public function isBeginExecuted(): bool;
+
+    /**
      * Executes the widget.
      *
      * @return string The result of widget execution to be outputted.
