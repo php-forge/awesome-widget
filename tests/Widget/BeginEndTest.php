@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace PHPForge\Widget\Tests\Widget;
 
-use PHPForge\Widget\Tests\Support\Widget\Widget;
+use PHPForge\Widget\Tests\Support\Widget\Block;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -14,10 +14,8 @@ final class BeginEndTest extends TestCase
 {
     public function testRender(): void
     {
-        Widget::widget()->id('test')->begin();
+        Block::widget()->id('test')->begin();
 
-        $output = Widget::end();
-
-        $this->assertSame('<id="test">', $output);
+        $this->assertSame('<id="test">', Block::end());
     }
 }

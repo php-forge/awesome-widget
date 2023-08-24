@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace PHPForge\Widget\Tests\Widget;
 
-use PHPForge\Widget\Tests\Support\Widget\Widget;
-use PHPForge\Widget\Tests\Support\Widget\WidgetConstructor;
+use PHPForge\Widget\Tests\Support\Widget\Block;
+use PHPForge\Widget\Tests\Support\Widget\BlockConstructor;
 use PHPUnit\Framework\TestCase;
 use RuntimeException;
 
@@ -16,11 +16,11 @@ final class ExceptionTest extends TestCase
 {
     public function testStackTracking(): void
     {
-        $widget = Widget::widget();
+        $widget = Block::widget();
 
         $this->expectException(RuntimeException::class);
         $this->expectExceptionMessage(
-            'Unexpected PHPForge\Widget\Tests\Support\Widget\Widget::end() call. A matching begin() is not found.'
+            'Unexpected PHPForge\Widget\Tests\Support\Widget\Block::end() call. A matching begin() is not found.'
         );
 
         $widget::end();
@@ -30,10 +30,10 @@ final class ExceptionTest extends TestCase
     {
         $this->expectException(RuntimeException::class);
         $this->expectExceptionMessage(
-            'Expecting end() of PHPForge\Widget\Tests\Support\Widget\Widget found PHPForge\Widget\Tests\Support\Widget\WidgetConstructor.'
+            'Expecting end() of PHPForge\Widget\Tests\Support\Widget\Block found PHPForge\Widget\Tests\Support\Widget\BlockConstructor.'
         );
 
-        Widget::widget()->begin();
-        WidgetConstructor::end();
+        Block::widget()->begin();
+        BlockConstructor::end();
     }
 }

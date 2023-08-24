@@ -4,18 +4,30 @@ declare(strict_types=1);
 
 namespace PHPForge\Widget;
 
-use ReflectionClass;
 use RuntimeException;
 
 use function array_pop;
 use function get_class;
 
-/**
- * AbstractWidget is the base class for widgets. A widget is a reusable component that can be used in different views.
- * It encapsulates the rendering logic of a particular UI component.
- */
-abstract class AbstractWidget extends Base\AbstractBaseWidget
+abstract class Block extends Base\Widget implements BlockInterface
 {
+    /**
+     * The widgets that are currently opened and not yet closed.
+     * This property is maintained by {@see begin()} and {@see end()} methods.
+     *
+     * @var static[]
+     */
+    private static array $stack = [];
+    private bool $beginExecuted = false;
+
+    public function begin(): string
+    {
+        self::$stack[] = $this;
+        $this->beginExecuted = true;
+
+        return '';
+    }
+
     final public static function end(): string
     {
         $class = static::class;
@@ -34,6 +46,11 @@ abstract class AbstractWidget extends Base\AbstractBaseWidget
         return $widget->render();
     }
 
+    public function isBeginExecuted(): bool
+    {
+        return $this->beginExecuted;
+    }
+
     final public function render(): string
     {
         if (!$this->beforeRun()) {
@@ -41,19 +58,5 @@ abstract class AbstractWidget extends Base\AbstractBaseWidget
         }
 
         return $this->afterRun($this->run());
-    }
-
-    final public static function widget(mixed ...$args): static
-    {
-        $reflection = new ReflectionClass(static::class);
-
-        /** @var static $widget */
-        $widget = $reflection->newInstanceArgs($args);
-
-        if ($widget->definitions === []) {
-            return $widget;
-        }
-
-        return Factory\SimpleWidgetFactory::factory($widget->definitions, $widget);
     }
 }
