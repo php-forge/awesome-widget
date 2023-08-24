@@ -4,22 +4,15 @@ declare(strict_types=1);
 
 namespace PHPForge\Widget\Base;
 
+use PHPForge\Widget\ElementInterface;
 use PHPForge\Widget\Event;
-use PHPForge\Widget\WidgetInterface;
+use PHPForge\Widget\Factory\SimpleFactory;
+use ReflectionClass;
 
-abstract class AbstractBaseWidget implements WidgetInterface
+abstract class Widget implements ElementInterface
 {
     use Event\HasAfterRun;
     use Event\HasBeforeRun;
-
-    /**
-     * The widgets that are currently opened and not yet closed.
-     * This property is maintained by {@see begin()} and {@see end()} methods.
-     *
-     * @var static[]
-     */
-    protected static array $stack = [];
-    private bool $beginExecuted = false;
 
     public function __construct(protected readonly array $definitions = [])
     {
@@ -37,17 +30,18 @@ abstract class AbstractBaseWidget implements WidgetInterface
         return $this->run();
     }
 
-    public function begin(): string
+    final public static function widget(mixed ...$args): static
     {
-        self::$stack[] = $this;
-        $this->beginExecuted = true;
+        $reflection = new ReflectionClass(static::class);
 
-        return '';
-    }
+        /** @var static $widget */
+        $widget = $reflection->newInstanceArgs($args);
 
-    public function isBeginExecuted(): bool
-    {
-        return $this->beginExecuted;
+        if ($widget->definitions === []) {
+            return $widget;
+        }
+
+        return SimpleFactory::factory($widget->definitions, $widget);
     }
 
     /**

@@ -4,15 +4,15 @@ declare(strict_types=1);
 
 namespace PHPForge\Widget\Factory;
 
-use PHPForge\Widget\AbstractWidget;
+use PHPForge\Widget\Base\Widget;
 
 use function call_user_func_array;
 use function str_ends_with;
 use function substr;
 
-final class SimpleWidgetFactory
+final class SimpleFactory
 {
-    public static function factory(array $definitions, AbstractWidget $widget): AbstractWidget
+    public static function factory(array $definitions, Widget $widget): Widget
     {
         /**
          * @var array<string, mixed> $definitions
@@ -30,7 +30,7 @@ final class SimpleWidgetFactory
             }
         }
 
-        /** @psalm-var AbstractWidget $widget */
+        /** @psalm-var Widget $widget */
         return $widget;
     }
 }

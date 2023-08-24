@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace PHPForge\Widget\Tests\Widget;
 
 use PHPForge\Html\Helper\Attributes;
-use PHPForge\Widget\Tests\Support\Widget\Widget;
-use PHPForge\Widget\Tests\Support\Widget\WidgetConstructor;
+use PHPForge\Widget\Tests\Support\Widget\Block;
+use PHPForge\Widget\Tests\Support\Widget\BlockConstructor;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -16,7 +16,7 @@ final class beginExecutedTest extends TestCase
 {
     public function testIsBeginExecuted(): void
     {
-        $widget = Widget::widget();
+        $widget = Block::widget();
 
         $this->assertFalse($widget->isBeginExecuted());
 
@@ -27,8 +27,8 @@ final class beginExecutedTest extends TestCase
 
     public function testIsBeginExecutedSeveralWidgets(): void
     {
-        $widget = Widget::widget();
-        $widgetConstructor = WidgetConstructor::widget(new Attributes());
+        $widget = Block::widget();
+        $widgetConstructor = BlockConstructor::widget(new Attributes());
 
         $this->assertFalse($widget->isBeginExecuted());
         $this->assertFalse($widgetConstructor->isBeginExecuted());

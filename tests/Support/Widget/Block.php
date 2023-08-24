@@ -5,9 +5,8 @@ declare(strict_types=1);
 namespace PHPForge\Widget\Tests\Support\Widget;
 
 use PHPForge\Html\Helper\Attributes;
-use PHPForge\Widget\Element;
 
-final class Widget extends Element
+final class Block extends \PHPForge\Widget\Block
 {
     protected array $attributes = [];
 
@@ -27,24 +26,9 @@ final class Widget extends Element
         return $new;
     }
 
-    protected function beforeRun(): bool
+    public function begin(): string
     {
-        if (isset($this->attributes['id']) && $this->attributes['id'] === 'beforerun') {
-            return false;
-        }
-
-        return parent::beforeRun();
-    }
-
-    protected function afterRun(string $result): string
-    {
-        $result = parent::afterRun($result);
-
-        if (isset($this->attributes['id']) && $this->attributes['id'] === 'afterrun') {
-            $result = '<div>' . $result . '</div>';
-        }
-
-        return $result;
+        return parent::begin();
     }
 
     protected function run(): string
