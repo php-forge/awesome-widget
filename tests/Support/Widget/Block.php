@@ -31,6 +31,15 @@ final class Block extends \PHPForge\Widget\Block
         return parent::begin();
     }
 
+    protected function beforeRun(): bool
+    {
+        if (isset($this->attributes['id']) && $this->attributes['id'] === 'beforerun') {
+            return false;
+        }
+
+        return parent::beforeRun();
+    }
+
     protected function run(): string
     {
         return '<' . trim((new Attributes())->render($this->attributes)) . '>';

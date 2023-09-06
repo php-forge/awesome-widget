@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace PHPForge\Widget\Tests\Widget;
 
+use PHPForge\Widget\Tests\Support\Widget\Block;
 use PHPForge\Widget\Tests\Support\Widget\Widget;
 use PHPUnit\Framework\TestCase;
 
@@ -12,13 +13,13 @@ use PHPUnit\Framework\TestCase;
  */
 final class BeforeRunTest extends TestCase
 {
-    public function testBeforeRun(): void
+    public function testBlock(): void
     {
-        $this->assertEmpty(Widget::widget()->id('beforerun')->render());
+        $this->assertEmpty(Block::widget()->id('beforerun')->render());
     }
 
-    public function testRender(): void
+    public function testElement(): void
     {
-        $this->assertSame('<>', Widget::widget()->render());
+        $this->assertEmpty(Widget::widget()->id('beforerun')->render());
     }
 }

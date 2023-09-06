@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace PHPForge\Widget\Event;
 
 /**
- * HasAfterRun is event that's triggered right after the widget is executed.
+ * An event that's triggered right after the widget is executed.
  */
 trait HasAfterRun
 {
