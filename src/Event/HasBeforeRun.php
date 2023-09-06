@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace PHPForge\Widget\Event;
 
 /**
- * HasBeforeRun is an event that's triggered right before the widget is executed.
+ * An event that's triggered right before the widget is executed.
  */
 trait HasBeforeRun
 {

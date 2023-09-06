@@ -9,6 +9,11 @@ use PHPForge\Widget\Event;
 use PHPForge\Widget\Factory\SimpleFactory;
 use ReflectionClass;
 
+/**
+ * An abstract class that implements the ElementInterface.
+ *
+ * It provides the basic structure and functionality for widgets in the PHPForge packages.
+ */
 abstract class Widget implements ElementInterface
 {
     use Event\HasAfterRun;
@@ -24,12 +29,23 @@ abstract class Widget implements ElementInterface
      * ```php
      * <?= MyWidget::create(); ?>
      * ```
+     * @return string
      */
     final public function __toString(): string
     {
         return $this->run();
     }
 
+    /**
+     * This method is a static factory method that creates an instance of the widget.
+     * It uses the ReflectionClass to create a new instance of the widget with the provided arguments.
+     * If the widget's definitions are empty, it returns the widget.
+     * Otherwise, it uses the SimpleFactory to create the widget with the definitions and the widget itself.
+     *
+     * @param mixed ...$args The arguments to pass to the widget's constructor.
+     *
+     * @return static The created widget instance.
+     */
     final public static function widget(mixed ...$args): static
     {
         $reflection = new ReflectionClass(static::class);
@@ -48,6 +64,7 @@ abstract class Widget implements ElementInterface
      * Renders widget content.
      *
      * This method is used by {@see render()} and is meant to be overridden when implementing concrete widget.
+     * @return string
      */
     abstract protected function run(): string;
 }
