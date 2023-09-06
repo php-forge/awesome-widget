@@ -42,7 +42,7 @@ final class SimpleFactory
             }
         }
 
+        /** @psalm-var Widget $widget */
         return $widget;
     }
 }
-

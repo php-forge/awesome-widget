@@ -1,5 +1,6 @@
 <?php
 
+
 declare(strict_types=1);
 
 namespace PHPForge\Widget;
@@ -17,8 +18,6 @@ abstract class Block extends Base\Widget implements BlockInterface
 {
     /**
      * A flag to check if the begin method has been executed.
-     *
-     * @var bool
      */
     private bool $beginExecuted = false;
 
@@ -26,7 +25,7 @@ abstract class Block extends Base\Widget implements BlockInterface
      * The widgets that are currently opened and not yet closed.
      * This property is maintained by {@see begin()} and {@see end()} methods.
      *
-     * @var static[]
+     * @psalm-var static[] $stack The widgets that are currently opened and not yet closed.
      */
     private static array $stack = [];
 

@@ -19,6 +19,9 @@ abstract class Widget implements ElementInterface
     use Event\HasAfterRun;
     use Event\HasBeforeRun;
 
+    /**
+     * @psalm-param array<string, mixed> $definitions The definitions to apply to the widget.
+     */
     public function __construct(protected readonly array $definitions = [])
     {
     }
@@ -29,7 +32,6 @@ abstract class Widget implements ElementInterface
      * ```php
      * <?= MyWidget::create(); ?>
      * ```
-     * @return string
      */
     final public function __toString(): string
     {
@@ -64,7 +66,6 @@ abstract class Widget implements ElementInterface
      * Renders widget content.
      *
      * This method is used by {@see render()} and is meant to be overridden when implementing concrete widget.
-     * @return string
      */
     abstract protected function run(): string;
 }
