@@ -29,5 +29,5 @@ interface ElementInterface extends Stringable
      *
      * @return self Returns an instance of the widget.
      */
-    public static function widget(mixed ...$args): self;
+    public static function widget(mixed ...$args): static;
 }
