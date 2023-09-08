@@ -27,7 +27,7 @@ interface ElementInterface extends Stringable
      *
      * @param mixed ...$args The constructor arguments for the widget.
      *
-     * @return self Returns an instance of the widget.
+     * @return static Returns an instance of the widget.
      */
     public static function widget(mixed ...$args): static;
 }
