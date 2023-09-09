@@ -19,9 +19,6 @@ abstract class Widget implements ElementInterface
     use Event\HasAfterRun;
     use Event\HasBeforeRun;
 
-    /**
-     * @psalm-param array<string, mixed> $definitions The definitions to apply to the widget.
-     */
     public function __construct(protected readonly array $definitions = [])
     {
     }

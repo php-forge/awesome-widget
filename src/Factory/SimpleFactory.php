@@ -27,11 +27,10 @@ final class SimpleFactory
      * @param Widget $widget The widget to apply the definitions to.
      *
      * @return Widget The widget with the applied definitions.
-     *
-     * @psalm-param array<string, mixed> $definitions The definitions to apply to the widget.
      */
     public static function factory(array $definitions, Widget $widget): Widget
     {
+        /** @psalm-var array<string, mixed> $definitions */
         foreach ($definitions as $action => $arguments) {
             if (str_ends_with($action, '()')) {
                 $setter = call_user_func_array([$widget, substr($action, 0, -2)], $arguments);
