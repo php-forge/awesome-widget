@@ -12,7 +12,7 @@ use PHPUnit\Framework\TestCase;
 /**
  * @psalm-suppress PropertyNotSetInConstructor
  */
-final class beginExecutedTest extends TestCase
+final class BeginExecutedTest extends TestCase
 {
     public function testIsBeginExecuted(): void
     {

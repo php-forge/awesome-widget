@@ -45,8 +45,9 @@ abstract class Block extends Base\Widget implements BlockInterface
     /**
      * Ends the execution of a widget, removes it from the stack and renders it.
      *
-     * @return string The rendered widget.
      * @throws RuntimeException if a matching begin() is not found or if the end() of a different widget is found.
+     *
+     * @return string The rendered widget.
      */
     final public static function end(): string
     {
