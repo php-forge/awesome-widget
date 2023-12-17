@@ -14,7 +14,7 @@ They may also be used in `forms` to generate the needed `HTML` code for displayi
 
 Widgets are primarily used in view.
 
-You can call the `PHPForge\Widget\AbstractWidget::widget()` method to use a widget in a view.
+You can call the `PHPForge\Widget\Widget::widget()` method to use a widget in a view.
 
 The method has one parameters:
 

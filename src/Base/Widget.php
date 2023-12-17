@@ -19,7 +19,10 @@ abstract class Widget implements ElementInterface
     use Event\HasAfterRun;
     use Event\HasBeforeRun;
 
-    public function __construct(protected readonly array $definitions = [])
+    /**
+     * @psalm-param array<string, mixed> $definitions
+     */
+    public function __construct(public readonly array $definitions = [])
     {
     }
 
@@ -47,16 +50,7 @@ abstract class Widget implements ElementInterface
      */
     final public static function widget(mixed ...$args): static
     {
-        $reflection = new ReflectionClass(static::class);
-
-        /** @var static $widget */
-        $widget = $reflection->newInstanceArgs($args);
-
-        if ($widget->definitions === []) {
-            return $widget;
-        }
-
-        return SimpleFactory::factory($widget->definitions, $widget);
+        return SimpleFactory::factory(static::class, $args);
     }
 
     /**
