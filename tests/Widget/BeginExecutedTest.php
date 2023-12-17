@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace PHPForge\Widget\Tests\Widget;
 
-use PHPForge\Html\Helper\Attributes;
 use PHPForge\Widget\Tests\Support\Widget\Block;
 use PHPForge\Widget\Tests\Support\Widget\BlockConstructor;
 use PHPUnit\Framework\TestCase;
