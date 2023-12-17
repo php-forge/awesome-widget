@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace PHPForge\Widget\Factory;
 
 use PHPForge\Widget\Base\Widget;
+use ReflectionClass;
 
 use function call_user_func_array;
 use function str_ends_with;
@@ -23,25 +24,32 @@ final class SimpleFactory
      * If a definition ends with '()', it is treated as a method call on the widget.
      * If the method call returns an instance of the widget, the widget is updated with the returned instance.
      *
-     * @param array $definitions The definitions to apply to the widget.
-     * @param Widget $widget The widget to apply the definitions to.
+     * @param string $class The widget class to create.
+     * @param array $args The arguments to pass to the widget's constructor.
      *
-     * @return Widget The widget with the applied definitions.
+     * @psalm-param class-string<Widget> $class
      */
-    public static function factory(array $definitions, Widget $widget): Widget
+    public static function factory(string $class, array $args): Widget
     {
-        /** @psalm-var array<string, mixed> $definitions */
-        foreach ($definitions as $action => $arguments) {
+        $reflection = new ReflectionClass($class);
+
+        /** @var Widget $widget */
+        $widget = $reflection->newInstanceArgs($args);
+
+        if ($widget->definitions === []) {
+            return $widget;
+        }
+
+        foreach ($widget->definitions as $action => $arguments) {
             if (str_ends_with($action, '()')) {
                 $setter = call_user_func_array([$widget, substr($action, 0, -2)], $arguments);
 
-                if ($setter instanceof $widget) {
+                if ($setter instanceof Widget) {
                     $widget = $setter;
                 }
             }
         }
 
-        /** @psalm-var Widget $widget */
         return $widget;
     }
 }
