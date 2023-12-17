@@ -4,37 +4,28 @@ declare(strict_types=1);
 
 namespace PHPForge\Widget\Tests\Support\Widget;
 
-use PHPForge\Html\Helper\Attributes;
 use PHPForge\Widget\Element;
 
 final class WidgetConstructor extends Element
 {
-    protected array $attributes = [];
+    protected string $id = '';
 
-    public function __construct(private Attributes $attributesHelper, array $definitions = [])
+    public function __construct(array $definitions = [])
     {
         parent::__construct($definitions);
     }
 
-    public function attributes(array $values): self
+    public function id(string $value): self
     {
         $new = clone $this;
-        $new->attributes = $values;
-
-        return $new;
-    }
-
-    public function id(string $id): self
-    {
-        $new = clone $this;
-        $new->attributes['id'] = $id;
+        $new->id = $value;
 
         return $new;
     }
 
     protected function beforeRun(): bool
     {
-        if (isset($this->attributes['id']) && $this->attributes['id'] === 'beforerun') {
+        if ($this->id === 'beforerun') {
             return false;
         }
 
@@ -45,7 +36,7 @@ final class WidgetConstructor extends Element
     {
         $result = parent::afterRun($result);
 
-        if (isset($this->attributes['id']) && $this->attributes['id'] === 'afterrun') {
+        if ($this->id === 'afterrun') {
             $result = '<div>' . $result . '</div>';
         }
 
@@ -54,6 +45,6 @@ final class WidgetConstructor extends Element
 
     protected function run(): string
     {
-        return '<' . trim($this->attributesHelper->render($this->attributes)) . '>';
+        return '<id="' . $this->id . '">';
     }
 }

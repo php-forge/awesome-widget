@@ -28,7 +28,7 @@ final class BeginExecutedTest extends TestCase
     public function testIsBeginExecutedSeveralWidgets(): void
     {
         $widget = Block::widget();
-        $widgetConstructor = BlockConstructor::widget(new Attributes());
+        $widgetConstructor = BlockConstructor::widget();
 
         $this->assertFalse($widget->isBeginExecuted());
         $this->assertFalse($widgetConstructor->isBeginExecuted());
