@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace PHPForge\Widget\Factory;
 
-use InvalidArgumentException;
 use PHPForge\Widget\Base\Widget;
 use ReflectionClass;
 
