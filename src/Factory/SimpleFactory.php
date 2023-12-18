@@ -19,7 +19,7 @@ final class SimpleFactory
 {
     public static array $defaultDefinitions = [];
 
-    public static function defaultValues(array $definitions): void
+    public static function defaultDefinitions(array $definitions): void
     {
         self::$defaultDefinitions = $definitions;
     }
