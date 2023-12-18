@@ -50,7 +50,7 @@ abstract class Widget implements ElementInterface
      */
     final public static function widget(mixed ...$args): static
     {
-        return SimpleFactory::factory(static::class, $args);
+        return SimpleFactory::create(static::class, $args);
     }
 
     /**

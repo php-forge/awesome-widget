@@ -17,6 +17,13 @@ use function substr;
  */
 final class SimpleFactory
 {
+    public static array $defaultDefinitions = [];
+
+    public static function defaultValues(array $definitions): void
+    {
+        self::$defaultDefinitions = $definitions;
+    }
+
     /**
      * Factory method for creating a widget.
      *
@@ -29,18 +36,33 @@ final class SimpleFactory
      *
      * @psalm-param class-string<Widget> $class
      */
-    public static function factory(string $class, array $args): Widget
+    public static function create(string $class, array $args): Widget
     {
         $reflection = new ReflectionClass($class);
 
         /** @var Widget $widget */
         $widget = $reflection->newInstanceArgs($args);
 
-        if ($widget->definitions === []) {
+        /** @psalm-var array<string, mixed> $defaultDefinitions */
+        $defaultDefinitions = self::$defaultDefinitions[$class] ?? [];
+
+        if ($defaultDefinitions !== []) {
+            $widget = self::configure($widget, $defaultDefinitions);
+        }
+
+        return self::configure($widget, $widget->definitions);
+    }
+
+    /**
+     * @psalm-param array<string, mixed> $definitions
+     */
+    public static function configure(Widget $widget, array $definitions): Widget
+    {
+        if ($definitions === []) {
             return $widget;
         }
 
-        foreach ($widget->definitions as $action => $arguments) {
+        foreach ($definitions as $action => $arguments) {
             if (str_ends_with($action, '()')) {
                 $setter = call_user_func_array([$widget, substr($action, 0, -2)], $arguments);
 
