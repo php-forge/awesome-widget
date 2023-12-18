@@ -32,7 +32,7 @@ final class SimpleFactoryTest extends TestCase
             ],
         ];
 
-        SimpleFactory::defaultValues($defaultDefinitions);
+        SimpleFactory::defaultDefinitions($defaultDefinitions);
         $widget = SimpleFactory::create(Widget::class, []);
 
         $this->assertSame('<id="id-widget">', $widget->render());
