@@ -43,13 +43,19 @@ final class SimpleFactory
         /** @var Widget $widget */
         $widget = $reflection->newInstanceArgs($args);
 
-        if (isset(self::$defaultDefinitions[$class])) {
-            $widget = self::configure($widget, self::$defaultDefinitions[$class]);
+        /** @psalm-var array<string, mixed> $defaultDefinitions */
+        $defaultDefinitions = self::$defaultDefinitions[$class] ?? [];
+
+        if ($defaultDefinitions !== []) {
+            $widget = self::configure($widget, $defaultDefinitions);
         }
 
         return self::configure($widget, $widget->definitions);
     }
 
+    /**
+     * @psalm-param array<string, mixed> $definitions
+     */
     public static function configure(Widget $widget, array $definitions): Widget
     {
         if ($definitions === []) {
