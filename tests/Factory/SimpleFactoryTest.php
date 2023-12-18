@@ -38,7 +38,6 @@ final class SimpleFactoryTest extends TestCase
         $this->assertSame('<id="id-widget">', $widget->render());
     }
 
-
     public function testConfigure(): void
     {
         $configWidget = SimpleFactory::configure(Widget::widget(), ['id()' => ['id-configure']]);
