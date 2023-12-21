@@ -21,6 +21,6 @@ final class ExceptionTest extends TestCase
             'The provided widget must be an instance of "PHPForge\Widget\Base\Widget", "stdClass" given.'
         );
 
-        SimpleFactory::configure(new stdClass, ['id()' => ['id-configure']]);
+        SimpleFactory::configure(new stdClass(), ['id()' => ['id-configure']]);
     }
 }
