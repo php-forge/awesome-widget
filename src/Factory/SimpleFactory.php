@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace PHPForge\Widget\Factory;
 
+use InvalidArgumentException;
 use PHPForge\Widget\Base\Widget;
 use ReflectionClass;
 
@@ -56,8 +57,18 @@ final class SimpleFactory
     /**
      * @psalm-param array<string, mixed> $definitions
      */
-    public static function configure(Widget $widget, array $definitions): Widget
+    public static function configure(object $widget, array $definitions): Widget
     {
+        if (!$widget instanceof Widget) {
+            throw new InvalidArgumentException(
+                sprintf(
+                    'The provided widget must be an instance of "%s", "%s" given.',
+                    Widget::class,
+                    get_class($widget)
+                )
+            );
+        }
+
         if ($definitions === []) {
             return $widget;
         }
