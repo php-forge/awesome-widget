@@ -39,6 +39,14 @@ abstract class Widget implements ElementInterface
     }
 
     /**
+     * This method is used to configure the widget with the provided default definitions.
+     */
+    public function loadDefaultDefinitions(): array
+    {
+        return [];
+    }
+
+    /**
      * This method is a static factory method that creates an instance of the widget.
      * It uses the ReflectionClass to create a new instance of the widget with the provided arguments.
      * If the widget's definitions are empty, it returns the widget.

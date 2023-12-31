@@ -51,6 +51,13 @@ final class SimpleFactory
             $widget = self::configure($widget, $defaultDefinitions);
         }
 
+        /** @psalm-var array<string, mixed> $loadDefaultDefinitions */
+        $loadDefaultDefinitions = $widget->loadDefaultDefinitions();
+
+        if ($loadDefaultDefinitions !== []) {
+            $widget = self::configure($widget, $loadDefaultDefinitions);
+        }
+
         return self::configure($widget, $widget->definitions);
     }
 

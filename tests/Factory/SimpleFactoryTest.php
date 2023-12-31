@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace PHPForge\Widget\Tests\Factory;
 
 use PHPForge\Widget\Factory\SimpleFactory;
+use PHPForge\Widget\Tests\Support\Widget\DefaultDefinition;
 use PHPForge\Widget\Tests\Support\Widget\Widget;
 use PHPForge\Widget\Tests\Support\Widget\WidgetConstructor;
 use PHPUnit\Framework\TestCase;
@@ -14,6 +15,16 @@ use PHPUnit\Framework\TestCase;
  */
 final class SimpleFactoryTest extends TestCase
 {
+    /**
+     * @depends testCreateWithDefaultDefinitions
+     */
+    public function testConfigure(): void
+    {
+        $widget = SimpleFactory::configure(Widget::widget(), ['id()' => ['id-configure']]);
+
+        $this->assertSame('<id="id-configure">', $widget->render());
+    }
+
     public function testCreate(): void
     {
         $widget = SimpleFactory::create(Widget::class, [['id()' => ['id-create']]]);
@@ -38,10 +49,23 @@ final class SimpleFactoryTest extends TestCase
         $this->assertSame('<id="id-widget">', $widget->render());
     }
 
-    public function testConfigure(): void
+    /**
+     * @depends testCreateWithDefaultDefinitions
+     */
+    public function testLoadDefaultDefinitions(): void
     {
-        $configWidget = SimpleFactory::configure(Widget::widget(), ['id()' => ['id-configure']]);
+        $widget = SimpleFactory::configure(DefaultDefinition::widget(), []);
 
-        $this->assertSame('<id="id-configure">', $configWidget->render());
+        $this->assertSame('<id="id-default-definitions">', $widget->render());
+    }
+
+    /**
+     * @depends testCreateWithDefaultDefinitions
+     */
+    public function testPriority(): void
+    {
+        $widget = $widget = SimpleFactory::configure(DefaultDefinition::widget(), ['id()' => ['id-configure']]);
+
+        $this->assertSame('<id="id-configure">', $widget->render());
     }
 }
