@@ -27,14 +27,6 @@ abstract class Widget implements ElementInterface
     }
 
     /**
-     * This method is used to configure the widget with the provided default definitions.
-     */
-    public function loadDefaultDefinitions(): array
-    {
-        return [];
-    }
-
-    /**
      * Allows not to call `->render()` explicitly:
      *
      * ```php
@@ -44,6 +36,14 @@ abstract class Widget implements ElementInterface
     final public function __toString(): string
     {
         return $this->run();
+    }
+
+    /**
+     * This method is used to configure the widget with the provided default definitions.
+     */
+    public function loadDefaultDefinitions(): array
+    {
+        return [];
     }
 
     /**
