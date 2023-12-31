@@ -51,6 +51,10 @@ final class SimpleFactory
             $widget = self::configure($widget, $defaultDefinitions);
         }
 
+        if ($widget->loadDefaultDefinitions() !== []) {
+            $widget = self::configure($widget, $widget->loadDefaultDefinitions());
+        }
+
         return self::configure($widget, $widget->definitions);
     }
 
