@@ -18,22 +18,6 @@ final class DefaultDefinition extends Element
         return $new;
     }
 
-    public function loadDefaultDefinitions(): array
-    {
-        return [
-            'id()' => ['id-default-definitions'],
-        ];
-    }
-
-    protected function beforeRun(): bool
-    {
-        if ($this->id === 'beforerun') {
-            return false;
-        }
-
-        return parent::beforeRun();
-    }
-
     protected function afterRun(string $result): string
     {
         $result = parent::afterRun($result);
@@ -45,8 +29,24 @@ final class DefaultDefinition extends Element
         return $result;
     }
 
+    protected function beforeRun(): bool
+    {
+        if ($this->id === 'beforerun') {
+            return false;
+        }
+
+        return parent::beforeRun();
+    }
+
     protected function run(): string
     {
         return '<id="' . $this->id . '">';
+    }
+
+    private function loadDefaultDefinitions(): array
+    {
+        return [
+            'id()' => ['id-default-definitions'],
+        ];
     }
 }

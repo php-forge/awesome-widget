@@ -52,7 +52,7 @@ final class SimpleFactory
         }
 
         /** @psalm-var array<string, mixed> $loadDefaultDefinitions */
-        $loadDefaultDefinitions = $widget->loadDefaultDefinitions();
+        $loadDefaultDefinitions = $reflection->getMethod('loadDefaultDefinitions')->invoke($widget);
 
         if ($loadDefaultDefinitions !== []) {
             $widget = self::configure($widget, $loadDefaultDefinitions);
