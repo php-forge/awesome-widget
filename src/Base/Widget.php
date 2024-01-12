@@ -7,7 +7,6 @@ namespace PHPForge\Widget\Base;
 use PHPForge\Widget\ElementInterface;
 use PHPForge\Widget\Event;
 use PHPForge\Widget\Factory\SimpleFactory;
-use ReflectionClass;
 
 /**
  * An abstract class that implements the ElementInterface.
@@ -63,7 +62,7 @@ abstract class Widget implements ElementInterface
     /**
      * This method is used to configure the widget with the provided default definitions.
      */
-    private function loadDefaultDefinitions(): array
+    protected function loadDefaultDefinitions(): array
     {
         return [];
     }

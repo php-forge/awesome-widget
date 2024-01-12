@@ -38,15 +38,15 @@ final class DefaultDefinition extends Element
         return parent::beforeRun();
     }
 
-    protected function run(): string
-    {
-        return '<id="' . $this->id . '">';
-    }
-
-    private function loadDefaultDefinitions(): array
+    protected function loadDefaultDefinitions(): array
     {
         return [
             'id()' => ['id-default-definitions'],
         ];
+    }
+
+    protected function run(): string
+    {
+        return '<id="' . $this->id . '">';
     }
 }
