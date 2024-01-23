@@ -25,8 +25,8 @@
     <a href="https://shepherd.dev/github/php-forge/awesome-widget" target="_blank">
         <img src="https://shepherd.dev/github/php-forge/awesome-widget/coverage.svg" alt="Psalm Coverage">
     </a>
-    <a href="https://github.styleci.io/repos/746576513?branch=initital-commit" target="_blank">
-        <img src="https://github.styleci.io/repos/746576513/shield?branch=initital-commit" alt="Style ci">
+    <a href="https://github.styleci.io/repos/494784194?branch=main" target="_blank">
+        <img src="https://github.styleci.io/repos/494784194/shield?branch=main" alt="Style ci">
     </a>           
 </p>
 
