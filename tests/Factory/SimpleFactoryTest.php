@@ -33,10 +33,11 @@ final class SimpleFactoryTest extends TestCase
     public function testCreate(): void
     {
         $widget = SimpleFactory::create(
-            Widget::class, [
+            Widget::class,
+            [
                 [
                     'id()' => ['id-create'],
-                ]
+                ],
             ]
         );
 
