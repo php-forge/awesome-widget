@@ -3,7 +3,7 @@
         <img src="https://avatars.githubusercontent.com/u/103309199?s%253D400%2526u%253Dca3561c692f53ed7eb290d3bb226a2828741606f%2526v%253D4" height="100px">
     </a>
     <a href="https://github.com/php-forge/awesome-widget" target="_blank">
-        <img src="https://cdn-icons-png.flaticon.com/512/5762/5762492.png" height="100px">
+        <img src="https://raw.githubusercontent.com/php-forge/awesome-widget/update-repository/docs/image/logo.jpg" height="100px">
     </a>    
     <h1 align="center">Foundation Classes and Components for Awesome Widget.</h1>
     <br>
