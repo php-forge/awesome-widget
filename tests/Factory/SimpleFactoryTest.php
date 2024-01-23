@@ -9,6 +9,7 @@ use PHPForge\Widget\Tests\Support\Widget\DefaultDefinition;
 use PHPForge\Widget\Tests\Support\Widget\Widget;
 use PHPForge\Widget\Tests\Support\Widget\WidgetConstructor;
 use PHPUnit\Framework\TestCase;
+use ReflectionException;
 
 /**
  * @psalm-suppress PropertyNotSetInConstructor
@@ -30,6 +31,9 @@ final class SimpleFactoryTest extends TestCase
         $this->assertSame('<id="id-configure">', $widget->render());
     }
 
+    /**
+     * @throws ReflectionException
+     */
     public function testCreate(): void
     {
         $widget = SimpleFactory::create(
@@ -44,6 +48,9 @@ final class SimpleFactoryTest extends TestCase
         $this->assertSame('<id="id-create">', $widget->render());
     }
 
+    /**
+     * @throws ReflectionException
+     */
     public function testCreateWithDefaultDefinitions(): void
     {
         $defaultDefinitions = [
@@ -76,7 +83,7 @@ final class SimpleFactoryTest extends TestCase
      */
     public function testPriority(): void
     {
-        $widget = $widget = SimpleFactory::configure(
+        $widget = SimpleFactory::configure(
             DefaultDefinition::widget(),
             [
                 'id()' => ['id-configure'],

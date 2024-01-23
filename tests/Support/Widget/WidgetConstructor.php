@@ -10,11 +10,6 @@ final class WidgetConstructor extends Element
 {
     protected string $id = '';
 
-    public function __construct(array $definitions = [])
-    {
-        parent::__construct($definitions);
-    }
-
     public function id(string $value): self
     {
         $new = clone $this;
@@ -25,7 +20,7 @@ final class WidgetConstructor extends Element
 
     protected function beforeRun(): bool
     {
-        if ($this->id === 'beforerun') {
+        if ($this->id === 'before-run') {
             return false;
         }
 

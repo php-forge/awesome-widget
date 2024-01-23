@@ -16,7 +16,7 @@ Widgets are primarily used in view.
 
 You can call the `PHPForge\Widget\Widget::widget()` method to use a widget in a view.
 
-The method has one parameters:
+The method has one parameter:
 
 - `constructor` array.
 

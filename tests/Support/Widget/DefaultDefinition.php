@@ -22,7 +22,7 @@ final class DefaultDefinition extends Element
     {
         $result = parent::afterRun($result);
 
-        if ($this->id === 'afterrun') {
+        if ($this->id === 'after-run') {
             $result = '<div>' . $result . '</div>';
         }
 
@@ -31,7 +31,7 @@ final class DefaultDefinition extends Element
 
     protected function beforeRun(): bool
     {
-        if ($this->id === 'beforerun') {
+        if ($this->id === 'before-run') {
             return false;
         }
 

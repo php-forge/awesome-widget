@@ -7,8 +7,11 @@ namespace PHPForge\Widget\Factory;
 use InvalidArgumentException;
 use PHPForge\Widget\Base\Widget;
 use ReflectionClass;
+use ReflectionException;
 
 use function call_user_func_array;
+use function get_class;
+use function sprintf;
 use function str_ends_with;
 use function substr;
 
@@ -36,6 +39,8 @@ final class SimpleFactory
      * @param array $args The arguments to pass to the widget's constructor.
      *
      * @psalm-param class-string<Widget> $class
+     *
+     * @throws ReflectionException
      */
     public static function create(string $class, array $args): Widget
     {

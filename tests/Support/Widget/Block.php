@@ -16,14 +16,9 @@ final class Block extends \PHPForge\Widget\Block
         return $new;
     }
 
-    public function begin(): string
-    {
-        return parent::begin();
-    }
-
     protected function beforeRun(): bool
     {
-        if ($this->id === 'beforerun') {
+        if ($this->id === 'before-run') {
             return false;
         }
 

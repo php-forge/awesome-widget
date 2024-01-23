@@ -15,11 +15,11 @@ final class BeforeRunTest extends TestCase
 {
     public function testBlock(): void
     {
-        $this->assertEmpty(Block::widget()->id('beforerun')->render());
+        $this->assertEmpty(Block::widget()->id('before-run')->render());
     }
 
     public function testElement(): void
     {
-        $this->assertEmpty(Widget::widget()->id('beforerun')->render());
+        $this->assertEmpty(Widget::widget()->id('before-run')->render());
     }
 }
