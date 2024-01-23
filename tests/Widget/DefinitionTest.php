@@ -20,6 +20,7 @@ final class DefinitionTest extends TestCase
                 [
                     'id()' => ['test-id'],
                 ]
-            )->render());
+            )->render()
+        );
     }
 }
