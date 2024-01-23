@@ -21,9 +21,7 @@ abstract class Widget implements ElementInterface
     /**
      * @psalm-param array<string, mixed> $definitions
      */
-    public function __construct(public readonly array $definitions = [])
-    {
-    }
+    public function __construct(public readonly array $definitions = []) {}
 
     /**
      * Allows not to call `->render()` explicitly:

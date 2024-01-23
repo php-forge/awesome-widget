@@ -10,7 +10,7 @@ element.
 
 They may also be used in `forms` to generate the needed `HTML` code for displaying the corresponding form field.
 
-## Usage
+# Usage
 
 Widgets are primarily used in view.
 
@@ -38,7 +38,7 @@ That would generate the following code:
 <id="id-test" class="text-danger">
 ```
 
-### Definition array
+## Definition array
 
 The `definitions` array is used to define the widget's properties and methods.
 
@@ -61,6 +61,39 @@ That would generate the following code:
 
 ```html
 <class="test-class">
+```
+
+## Load default definitions
+
+You can load the default definitions by calling the `PHPForge\Widget\Widget::loadDefaultDefinitions()` method.
+
+```php
+<?php
+
+declare(strict_types=1);
+
+final class DefaultDefinition extends Element
+{
+    private string $id = '';
+
+    public function id(string $value): self
+    {
+        $new = clone $this;
+        $new->id = $value;
+
+        return $new;
+    }
+
+    /**
+     * This method is used to configure the widget with the provided default definitions.
+     */
+    protected function loadDefaultDefinitions(): array
+    {
+        return [
+            'id()' => ['id-default-definitions'],
+        ];
+    }
+}
 ```
 
 ## Creating
@@ -92,7 +125,8 @@ final class Widget extends AbstractWidget
 
 Widgets may capture the content inside between the `begin()` and `end()` calls.
 
-This is useful when you want to generate a widget that has some content. For example, you may want to generate a widget that mimics opening and closing HTML tags.
+This is useful when you want to generate a widget that has some content. For example, you may want to generate a widget
+that mimics opening and closing HTML tags.
 
 For your widget to do this, you need to override the `parent begin()` method and don't forget to call `parent::begin()`:
 
@@ -136,7 +170,8 @@ Then you can use the widget like the following:
 
 The `beforeRun()` method is called right before running the widget.
 
-The return value of the method will decide whether the widget should continue to run. When overriding this method, make sure you call the `parent` implementation like the following:
+The return value of the method will decide whether the widget should continue to run. When overriding this method, make
+sure you call the `parent` implementation like the following:
 
 ```php
 protected function beforeRun(): bool
@@ -151,7 +186,8 @@ protected function beforeRun(): bool
 
 ## After run
 
-The `afterRun()` method is called right after running the widget. The return value of the method will be used as the widget's return value. When overriding this method, make sure you call the `parent` implementation like the following:
+The `afterRun()` method is called right after running the widget. The return value of the method will be used as the
+widget's return value. When overriding this method, make sure you call the `parent` implementation like the following:
 
 ```php
 protected function afterRun(string $result): string
