@@ -20,14 +20,25 @@ final class SimpleFactoryTest extends TestCase
      */
     public function testConfigure(): void
     {
-        $widget = SimpleFactory::configure(Widget::widget(), ['id()' => ['id-configure']]);
+        $widget = SimpleFactory::configure(
+            Widget::widget(),
+            [
+                'id()' => ['id-configure'],
+            ]
+        );
 
         $this->assertSame('<id="id-configure">', $widget->render());
     }
 
     public function testCreate(): void
     {
-        $widget = SimpleFactory::create(Widget::class, [['id()' => ['id-create']]]);
+        $widget = SimpleFactory::create(
+            Widget::class, [
+                [
+                    'id()' => ['id-create'],
+                ]
+            ]
+        );
 
         $this->assertSame('<id="id-create">', $widget->render());
     }
@@ -64,7 +75,12 @@ final class SimpleFactoryTest extends TestCase
      */
     public function testPriority(): void
     {
-        $widget = $widget = SimpleFactory::configure(DefaultDefinition::widget(), ['id()' => ['id-configure']]);
+        $widget = $widget = SimpleFactory::configure(
+            DefaultDefinition::widget(),
+            [
+                'id()' => ['id-configure'],
+            ]
+        );
 
         $this->assertSame('<id="id-configure">', $widget->render());
     }

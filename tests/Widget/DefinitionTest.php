@@ -14,6 +14,12 @@ final class DefinitionTest extends TestCase
 {
     public function testRender(): void
     {
-        $this->assertSame('<id="test-id">', Widget::widget(['id()' => ['test-id']])->render());
+        $this->assertSame(
+            '<id="test-id">',
+            Widget::widget(
+                [
+                    'id()' => ['test-id'],
+                ]
+            )->render());
     }
 }
