@@ -68,16 +68,6 @@ abstract class Block extends Base\Widget implements BlockInterface
     }
 
     /**
-     * Checks if the begin method has been executed.
-     *
-     * @return bool True if the begin method has been executed, false otherwise.
-     */
-    public function isBeginExecuted(): bool
-    {
-        return $this->beginExecuted;
-    }
-
-    /**
      * Renders the widget if the beforeRun method returns true.
      *
      * @return string The rendered widget or an empty string if the beforeRun method returns false.
@@ -89,5 +79,15 @@ abstract class Block extends Base\Widget implements BlockInterface
         }
 
         return $this->afterRun($this->run());
+    }
+
+    /**
+     * Checks if the begin method has been executed.
+     *
+     * @return bool True if the begin method has been executed, false otherwise.
+     */
+    protected function isBeginExecuted(): bool
+    {
+        return $this->beginExecuted;
     }
 }

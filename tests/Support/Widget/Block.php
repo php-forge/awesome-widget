@@ -27,6 +27,9 @@ final class Block extends \PHPForge\Widget\Block
 
     protected function run(): string
     {
-        return '<id="' . $this->id . '">';
+        return match ($this->isBeginExecuted()) {
+            true => '<id="' . $this->id . '-begin">',
+            default => '<id="' . $this->id . '">',
+        };
     }
 }

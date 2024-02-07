@@ -16,6 +16,6 @@ final class BeginEndTest extends TestCase
     {
         Block::widget()->id('test')->begin();
 
-        $this->assertSame('<id="test">', Block::end());
+        $this->assertSame('<id="test-begin">', Block::end());
     }
 }
