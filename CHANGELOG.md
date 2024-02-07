@@ -1,7 +1,7 @@
 Change Log
 ==========
 
-## 0.1.2 Under development
+## 0.1.2 February 07, 2024
 
 - Bug #35: Fix visibility of `isBeginExecuted()` method in `Block::class` (@terabytesoftw).
 
