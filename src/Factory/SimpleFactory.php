@@ -75,7 +75,7 @@ final class SimpleFactory
      * @template T of Widget
      *
      * @param T $widget The widget to configure.
-     * @param array $definitions
+     * @param array $definitions The definitions to apply to the widget.
      *
      * @return Widget The widget with the applied definitions.
      *
