@@ -72,19 +72,19 @@ final class SimpleFactory
      *
      * This method iterates over the provided definitions and applies them to the widget.
      *
-     * @template T of Widget
-     *
-     * @param T $widget The widget to configure.
+     * @param object $widget The widget to configure.
      * @param array $definitions The definitions to apply to the widget.
      *
      * @return Widget The widget with the applied definitions.
      *
+     * @psalm-template T of Widget
+     *
      * @psalm-param T $widget The widget to configure.
      * @psalm-param array<string, mixed> $definitions The definitions to apply to the widget.
      *
-     * @psalm-return T|Widget
+     * @psalm-return T The widget with the applied definitions.
      */
-    public static function configure(object $widget, array $definitions)
+    public static function configure(object $widget, array $definitions): widget
     {
         if (!$widget instanceof Widget) {
             throw new InvalidArgumentException(
@@ -97,6 +97,7 @@ final class SimpleFactory
         }
 
         if ($definitions === []) {
+            /** @psalm-var T $widget */
             return $widget;
         }
 
@@ -104,7 +105,8 @@ final class SimpleFactory
             if (str_ends_with($action, '()')) {
                 $setter = call_user_func_array([$widget, substr($action, 0, -2)], $arguments);
 
-                if ($setter instanceof Widget) {
+                if ($setter instanceof $widget) {
+                    /** @psalm-var T $widget */
                     $widget = $setter;
                 }
             }
