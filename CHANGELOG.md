@@ -1,6 +1,8 @@
 Change Log
 ==========
 
+## 0.1.4 Under development
+
 ## 0.1.3 March 26, 2024
 
 - Bug #36: Refactor `SimpleFactory::configure()` method to improve code readability and maintainability (@terabytesoftw)
