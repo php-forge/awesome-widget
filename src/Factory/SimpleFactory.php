@@ -17,6 +17,7 @@ use function substr;
 
 /**
  * This class is responsible for creating a widget based on the provided definitions.
+ * 
  * It uses the factory design pattern to create the widget.
  */
 final class SimpleFactory
@@ -67,9 +68,23 @@ final class SimpleFactory
     }
 
     /**
-     * @psalm-param array<string, mixed> $definitions
+     * Configures the widget with the provided definitions.
+     *
+     * This method iterates over the provided definitions and applies them to the widget.
+     *
+     * @template T of Widget
+     *
+     * @param T $widget The widget to configure.
+     * @param array $definitions
+     *
+     * @return Widget The widget with the applied definitions.
+     *
+     * @psalm-param T $widget The widget to configure.
+     * @psalm-param array<string, mixed> $definitions The definitions to apply to the widget.
+     *
+     * @psalm-return T|Widget
      */
-    public static function configure(object $widget, array $definitions): Widget
+    public static function configure(object $widget, array $definitions)
     {
         if (!$widget instanceof Widget) {
             throw new InvalidArgumentException(
