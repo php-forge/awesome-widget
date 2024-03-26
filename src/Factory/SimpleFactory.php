@@ -17,7 +17,7 @@ use function substr;
 
 /**
  * This class is responsible for creating a widget based on the provided definitions.
- * 
+ *
  * It uses the factory design pattern to create the widget.
  */
 final class SimpleFactory
