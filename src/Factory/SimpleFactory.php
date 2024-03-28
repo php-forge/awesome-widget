@@ -77,12 +77,7 @@ final class SimpleFactory
      *
      * @return Widget The widget with the applied definitions.
      *
-     * @psalm-template T of Widget
-     *
-     * @psalm-param T $widget The widget to configure.
-     * @psalm-param array<string, mixed> $definitions The definitions to apply to the widget.
-     *
-     * @psalm-return T The widget with the applied definitions.
+     * @psalm-param array<string, mixed> $definitions
      */
     public static function configure(object $widget, array $definitions): widget
     {
@@ -97,7 +92,6 @@ final class SimpleFactory
         }
 
         if ($definitions === []) {
-            /** @psalm-var T $widget */
             return $widget;
         }
 
@@ -105,8 +99,7 @@ final class SimpleFactory
             if (str_ends_with($action, '()')) {
                 $setter = call_user_func_array([$widget, substr($action, 0, -2)], $arguments);
 
-                if ($setter instanceof $widget) {
-                    /** @psalm-var T $widget */
+                if ($setter instanceof Widget) {
                     $widget = $setter;
                 }
             }
