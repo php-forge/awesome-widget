@@ -96,6 +96,42 @@ final class DefaultDefinition extends Element
 }
 ```
 
+## Cookbook
+
+The `cookbook()` method is used to configure the widget with the provided default definitions.
+
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace App\Widget;
+
+use App\Definition\BootstrapAlertDismissible;
+
+final class DefaultDefinition extends Element
+{
+    private string $id = '';
+
+    public function getCookbooks(string $option): array
+    {
+        return [
+            'bootstrap-alert-dismmisible' => BootstrapAlertDismissible::definition($option),
+        ];
+    }
+}
+```
+
+```php
+<?php
+
+declare(strict_types=1);
+
+use App\Widget\DefaultDefinition;
+
+DefaultDefinition::widget()->cookbook('bootstrap-alert-dismmisible', 'success')->render();
+```
+
 ## Creating
 
 To create a widget, you need to extend the `PHPForge\Widget\AbstractWidget::class` and implement the `PHPForge\Widget\Widget::run()` protected method.

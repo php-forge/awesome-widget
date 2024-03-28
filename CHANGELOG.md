@@ -1,7 +1,9 @@
 Change Log
 ==========
 
-## 0.1.4 Under development
+## 0.1.4 March 28, 2024
+
+- Enh #37: Add `cookbook()` method to `Widget::class` (@terabytesoftw)
 
 ## 0.1.3 March 26, 2024
 

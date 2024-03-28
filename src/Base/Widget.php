@@ -36,6 +36,22 @@ abstract class Widget implements ElementInterface
     }
 
     /**
+     * This method is used to configure the widget with the provided cookbook definitions.
+     *
+     * @param string $key The key to load the cookbook for.
+     * @param string $option The option to load the cookbook for.
+     *
+     * @return static The widget instance with the cookbook definitions applied.
+     */
+    final public function cookbook(string $key, string $option): static
+    {
+        /** @psalm-var array<string, mixed> $cookbook */
+        $cookbook = $this->getCookbooks($option)[$key] ?? [];
+
+        return SimpleFactory::configure($this, $cookbook);
+    }
+
+    /**
      * This method is a static factory method that creates an instance of the widget.
      * It uses the ReflectionClass to create a new instance of the widget with the provided arguments.
      * If the widget's definitions are empty, it returns the widget.
@@ -56,6 +72,18 @@ abstract class Widget implements ElementInterface
      * This method is used by {@see render()} and is meant to be overridden when implementing concrete widget.
      */
     abstract protected function run(): string;
+
+    /**
+     * This method is used to configure the widget with the provided cookbooks.
+     *
+     * @param string $option The option to load the cookbook for.
+     *
+     * @return array The cookbook for the widget configuration.
+     */
+    protected function getCookbooks(string $option): array
+    {
+        return [];
+    }
 
     /**
      * This method is used to configure the widget with the provided default definitions.

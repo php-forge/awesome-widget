@@ -21,11 +21,7 @@ final class ConstructorTest extends TestCase
 
     public function testConstructorWithDefinitions(): void
     {
-        $output = WidgetConstructor::widget(
-            [
-                'id()' => ['w1'],
-            ]
-        );
+        $output = WidgetConstructor::widget(['id()' => ['w1']]);
 
         $this->assertSame('<id="w1">', $output->render());
     }

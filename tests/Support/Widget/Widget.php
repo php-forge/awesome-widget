@@ -38,6 +38,13 @@ final class Widget extends Element
         return $result;
     }
 
+    protected function getCookbooks(string $option): array
+    {
+        return [
+            'cookbook-id' => ['id()' => [$option]],
+        ];
+    }
+
     protected function run(): string
     {
         return '<id="' . $this->id . '">';
