@@ -78,7 +78,8 @@ final class SimpleFactoryTest extends TestCase
     public function testPriority(): void
     {
         $widget = SimpleFactory::configure(
-            DefaultDefinition::widget(), ['id()' => ['id-configure']]
+            DefaultDefinition::widget(),
+            ['id()' => ['id-configure']]
         );
 
         $this->assertSame('<id="id-configure">', $widget->render());
