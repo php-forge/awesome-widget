@@ -23,7 +23,7 @@ final class CookbookTest extends TestCase
 
     public function testGetCookbooks(): void
     {
-        $instance = new class() extends Element {
+        $instance = new class () extends Element {
             protected function run(): string
             {
                 return '';
