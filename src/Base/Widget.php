@@ -43,7 +43,7 @@ abstract class Widget implements ElementInterface
      *
      * @return static The widget instance with the cookbook definitions applied.
      */
-    final public function cookbook(string $key, string $option): static
+    final public function cookbook(string $key, string $option = ''): static
     {
         /** @psalm-var array<string, mixed> $cookbook */
         $cookbook = $this->getCookbooks($option)[$key] ?? [];
