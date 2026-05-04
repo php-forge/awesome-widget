@@ -15,7 +15,7 @@
         "php-forge/support": "^0.1",
         "phpunit/phpunit": "^10.5",
         "roave/infection-static-analysis-plugin": "^1.34",
-        "symplify/easy-coding-standard": "^12.1",
+        "symplify/easy-coding-standard": "^13.1",
         "vimeo/psalm": "^5.20"
     },
     "autoload": {
