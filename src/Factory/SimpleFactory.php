@@ -79,7 +79,7 @@ final class SimpleFactory
      *
      * @psalm-param array<string, mixed> $definitions
      */
-    public static function configure(object $widget, array $definitions): widget
+    public static function configure(object $widget, array $definitions): Widget
     {
         if (!$widget instanceof Widget) {
             throw new InvalidArgumentException(
